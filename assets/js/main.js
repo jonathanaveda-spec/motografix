@@ -21,13 +21,15 @@
     // Antelación mínima para agendar, en días
     minDias: 1,
 
-    // ⚠️ PENDIENTE: clave de Web3Forms.
-    // Hace que cada solicitud llegue TAMBIÉN al correo del taller, sin
-    // depender de que el cliente pulse "Enviar por WhatsApp".
-    // Se pide gratis en https://web3forms.com poniendo Motografix7@gmail.com;
-    // la clave llega a ese mismo correo y se pega aquí.
-    // Mientras esté vacía, el formulario sigue funcionando solo por WhatsApp.
-    formKey: ''
+    // Clave de Web3Forms: hace que cada solicitud llegue TAMBIÉN al correo
+    // del taller, sin depender de que el cliente pulse "Enviar por WhatsApp".
+    //
+    // Es una clave PÚBLICA, pensada para ir en el código del navegador: no
+    // da acceso a la cuenta ni revela el correo de destino. Ese correo se
+    // cambia desde el panel de https://app.web3forms.com
+    //
+    // Si se deja vacía, el formulario vuelve a funcionar solo por WhatsApp.
+    formKey: '634f42f7-af18-4628-a3c6-b6d2e0170453'
   };
 
   const $  = (sel, ctx = document) => ctx.querySelector(sel);
