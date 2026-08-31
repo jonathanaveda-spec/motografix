@@ -583,6 +583,20 @@ body.is-locked{
 
 .form__hint{ font-size:.78rem; color:var(--gray); text-align:center; }
 
+/* Trampa antispam: fuera de la vista y del foco, pero presente en el DOM */
+.hp{
+  position:absolute !important; width:1px; height:1px;
+  opacity:0; pointer-events:none; margin:-1px; overflow:hidden;
+}
+
+.form__warn{
+  margin-bottom:14px; padding:11px 14px;
+  background:rgba(255,201,51,.09); border-left:3px solid var(--yellow);
+  border-radius:var(--radius-sm);
+  font-size:.85rem; color:var(--text-2); text-align:left;
+}
+.form__warn[hidden]{ display:none; }
+
 .form__success{
   border-radius:var(--radius-sm); border:1px solid var(--line);
   border-top:3px solid var(--blue);

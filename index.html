@@ -514,12 +514,19 @@
         <small class="field__error" data-error-for="acepto"></small>
       </div>
 
+      <!-- Trampa antispam: invisible para las personas, los bots la llenan -->
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
       <button class="btn btn--primary btn--block" type="submit">Solicitar cita</button>
       <p class="form__hint">* Campos obligatorios. Respondemos en horario laboral.</p>
 
       <div class="form__success" id="formSuccess" hidden>
         <h3>¡Tu solicitud está lista!</h3>
         <p id="successText"></p>
+        <p class="form__warn" id="successMailWarn" hidden>
+          No pudimos registrar tu solicitud automáticamente. Envíala por WhatsApp
+          para que no se pierda.
+        </p>
         <div class="form__success-actions">
           <a class="btn btn--primary btn--sm" id="waLink" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
           <button class="btn btn--ghost btn--sm" type="button" id="resetForm">Hacer otra solicitud</button>

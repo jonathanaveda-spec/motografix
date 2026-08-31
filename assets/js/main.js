@@ -19,7 +19,15 @@
     diasCerrados: [0],
 
     // Antelación mínima para agendar, en días
-    minDias: 1
+    minDias: 1,
+
+    // ⚠️ PENDIENTE: clave de Web3Forms.
+    // Hace que cada solicitud llegue TAMBIÉN al correo del taller, sin
+    // depender de que el cliente pulse "Enviar por WhatsApp".
+    // Se pide gratis en https://web3forms.com poniendo Motografix7@gmail.com;
+    // la clave llega a ese mismo correo y se pega aquí.
+    // Mientras esté vacía, el formulario sigue funcionando solo por WhatsApp.
+    formKey: ''
   };
 
   const $  = (sel, ctx = document) => ctx.querySelector(sel);
@@ -375,6 +383,44 @@
     });
   };
 
+  /* ---------- Copia por correo ----------
+     Hasta ahora la cita solo llegaba si el cliente pulsaba "Enviar por
+     WhatsApp". Quien llenaba el formulario y se iba, se perdía. Esto
+     manda la solicitud al correo del taller apenas se pulsa "Solicitar
+     cita", sin esperar ese segundo clic.
+
+     No bloquea nada: el panel de confirmación aparece de inmediato y el
+     envío viaja en segundo plano. Si falla, se le avisa al cliente para
+     que use el WhatsApp y la cita no se pierda igual.                  */
+  const avisoCorreo = $('#successMailWarn');
+
+  const enviarPorCorreo = (data, fechaLarga) => {
+    if (!CONFIG.formKey) return;   // sin clave configurada no hace nada
+
+    const falló = () => { if (avisoCorreo) avisoCorreo.hidden = false; };
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: CONFIG.formKey,
+        subject: 'Nueva cita: ' + data.nombre + ' — ' + data.servicio,
+        from_name: 'Web de ' + CONFIG.negocio,
+        botcheck: data.botcheck || '',
+
+        Nombre: data.nombre,
+        WhatsApp: data.telefono,
+        Vehículo: data.vehiculo + (data.modelo ? ' (' + data.modelo + ')' : ''),
+        Servicio: data.servicio,
+        Fecha: fechaLarga + ' a las ' + data.hora,
+        Detalles: data.mensaje || '(sin detalles)'
+      })
+    })
+      .then((r) => r.json())
+      .then((res) => { if (!res || !res.success) falló(); })
+      .catch(falló);
+  };
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -412,20 +458,14 @@
         '. Envíanos el resumen por WhatsApp y confirmamos el cupo en menos de 2 horas hábiles.';
     }
 
+    if (avisoCorreo) avisoCorreo.hidden = true;
+    enviarPorCorreo(data, fechaLarga);
+
     form.classList.add('is-sent');
     if (success) {
       success.hidden = false;
       success.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-
-    /* ---------------------------------------------------
-       ¿Backend propio? Reemplaza el bloque de arriba por:
-       fetch('/api/citas', {
-         method: 'POST',
-         headers: { 'Content-Type': 'application/json' },
-         body: JSON.stringify(data)
-       })
-       --------------------------------------------------- */
   });
 
   const resetBtn = $('#resetForm');
