@@ -510,6 +510,19 @@ body.is-locked{
 .book__quote p{ font-size:.98rem; font-style:italic; color:var(--ink-3); }
 .book__quote cite{ display:block; margin-top:10px; font-size:.82rem; color:var(--gray); font-style:normal; }
 
+/* Prueba social mientras no haya un testimonio real de un cliente */
+.book__proof{
+  margin-top:34px; padding:22px 24px; background:var(--bg);
+  border:1px solid var(--line); border-left:4px solid var(--yellow); border-radius:var(--radius-sm);
+}
+.book__proof p{ font-size:.95rem; color:var(--ink-3); }
+.book__proof-links{ display:flex; flex-wrap:wrap; gap:18px; margin-top:12px; }
+.book__proof-links a{
+  font-size:.88rem; font-weight:600; color:var(--blue);
+  border-bottom:1px solid transparent; transition:border-color .18s;
+}
+.book__proof-links a:hover{ border-bottom-color:var(--blue); }
+
 .form{
   background:var(--bg); border:1px solid var(--line); border-radius:var(--radius);
   padding:clamp(24px,3.5vw,36px); box-shadow:var(--shadow); display:grid; gap:18px;
