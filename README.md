@@ -156,14 +156,44 @@ El rojo, el amarillo y el azul de la marca siguen ahí: ahora van en las etiquet
 
 ## Paleta de colores
 
-En `assets/css/styles.css`, dentro de `:root`:
+Tema oscuro completo, estilo "asfalto". En `assets/css/styles.css`, dentro de `:root`:
 
 ```css
---red: #E5202E;    /* acento principal, CTAs — el rojo del logo */
---yellow: #FFC300; /* acento secundario, detalles */
---blue: #1B4DFF;   /* foco, enlaces, estados */
---ink: #0C0E14;    /* header, hero, galería y footer */
+/* Marca — los tres del logo, subidos de tono para que peguen en oscuro */
+--red: #FF2E3F;    /* acento principal, CTAs */
+--yellow: #FFC933; /* acento secundario, viñetas */
+--blue: #3D7BFF;   /* foco, enlaces, estados */
+
+/* Tornasol — el color insignia, sacado de los wraps del taller */
+--iri-1: #A855F7;  /* morado */
+--iri-2: #3D7BFF;  /* azul   */
+--iri-3: #22D3EE;  /* cian   */
 ```
+
+El tornasol se usa en el titular del hero ("Sin repetirse"), en la barra
+superior de las tarjetas de servicio al pasar el mouse, en los resplandores
+del fondo del hero y en el bloque de llamada a la acción.
+
+### Los grises son cuatro y cada uno tiene su trabajo
+
+Es lo más fácil de romper si se editan a ojo:
+
+| Variable | Para qué |
+|---|---|
+| `--bg` `#08090C` | fondo de la página |
+| `--bg-soft` `#0D1015` | bandas de sección y campos del formulario |
+| `--surface` `#14171E` | tarjetas y paneles que van *encima* de la página |
+| `--surface-2` `#1B1F28` | campo del formulario cuando está enfocado |
+| `--ink` `#0B0D12` | negro más profundo: hero, galería, pie, menú móvil |
+
+Y el texto: `--text` para el principal, `--text-2` para el secundario,
+`--gray` / `--gray-2` para el apagado.
+
+### El grano
+
+La textura de grano de película sale de un SVG en línea aplicado en `body::after`
+al 4,5 % de opacidad. Le quita el brillo digital al negro. Si molesta, se baja la
+`opacity` o se borra ese bloque: no afecta a nada más.
 
 ## Optimización para celulares
 
