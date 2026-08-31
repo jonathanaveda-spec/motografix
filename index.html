@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotoGrafix — Wrap y calcomanías para motos y vehículos | Cali</title>
+<meta name="description" content="MotoGrafix: wrapping profesional, vinilos y calcomanías personalizadas para motos, autos y camionetas en Cali, Valle del Cauca. Agenda tu cita en línea.">
+<meta name="theme-color" content="#0C0E14">
+
+<meta property="og:title" content="MotoGrafix — Wrap y calcomanías para motos y vehículos">
+<meta property="og:description" content="Wrapping profesional, vinilos y calcomanías personalizadas en Cali. Agenda tu cita en línea.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ================= HEADER ================= -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <!-- Logo horizontal. Si el archivo faltara, se muestra un logo de texto de respaldo. -->
+    <a class="logo" href="#inicio" aria-label="MotoGrafix, inicio">
+      <img class="logo__img" src="assets/img/logo-motografix.png" alt="MotoGrafix">
+      <span class="logo__fallback" hidden>
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M4 23 L10 9 L16 18 L22 9 L28 23" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo__text">Moto<span>Grafix</span></span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#servicios">Servicios</a></li>
+        <li><a class="nav__link" href="#galeria">Trabajos</a></li>
+        <li><a class="nav__link" href="#proceso">Proceso</a></li>
+        <li><a class="nav__link" href="#faq">FAQ</a></li>
+        <li><a class="nav__link" href="#contacto">Contacto</a></li>
+      </ul>
+      <a class="btn btn--primary btn--sm nav__cta" href="#agendar">Agendar cita</a>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="header__stripe" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="eyebrow reveal">Taller de wrapping y vinilos · Cali, Valle del Cauca</p>
+      <h1 class="hero__title reveal">
+        Tu moto.<br>
+        Tu estilo.<br>
+        <span class="grad">Sin repetirse.</span>
+      </h1>
+      <p class="hero__text reveal">
+        Wrap completo, kits gráficos y calcomanías de alta durabilidad para motos,
+        autos y camionetas. Instalación certificada, vinilo premium y acabados que
+        aguantan sol, lluvia y carretera.
+      </p>
+      <div class="hero__actions reveal">
+        <a class="btn btn--primary" href="#agendar">Agendar mi cita</a>
+        <a class="btn btn--ghost" href="#galeria">Ver trabajos</a>
+      </div>
+
+      <ul class="hero__stats reveal">
+        <li><strong>+900</strong><span>Vehículos intervenidos</span></li>
+        <li><strong>5 años</strong><span>Garantía en vinilo</span></li>
+        <li><strong>Lun a Sáb</strong><span>Jornada continua 9:30 – 6:30</span></li>
+      </ul>
+    </div>
+
+    <!--
+      Estas 3 fotos son las mismas de la galería: el navegador las guarda en
+      caché y no las vuelve a descargar más abajo. Si las cambias, usa fotos
+      que ya estén en el portafolio para no sumar peso a la primera carga.
+    -->
+    <div class="hero__visual reveal">
+      <figure class="hero__shot hero__shot--1">
+        <img src="assets/img/trabajos/akt-special-110-wrap-camaleon.jpeg"
+             alt="AKT Special 110 con wrap camaleón gris y morado" decoding="async">
+        <figcaption><span class="tag tag--red">Wrap completo</span></figcaption>
+      </figure>
+
+      <figure class="hero__shot hero__shot--2">
+        <img src="assets/img/trabajos/akt-nkd-125-wrap-tornasol-2.jpeg"
+             alt="Detalle del tanque de una AKT NKD 125 en vinilo tornasol" loading="lazy" decoding="async">
+        <figcaption><span class="tag tag--blue">Gráficos</span></figcaption>
+      </figure>
+
+      <figure class="hero__shot hero__shot--3">
+        <img src="assets/img/trabajos/yamaha-crypton-rin-tornasol.jpeg"
+             alt="Rin de una Yamaha Crypton forrado en vinilo tornasol" loading="lazy" decoding="async">
+        <figcaption><span class="tag tag--yellow">Rines</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARCAS ================= -->
+<section class="marquee" aria-label="Marcas con las que trabajamos">
+  <p class="marquee__label">Trabajamos con</p>
+  <div class="marquee__track">
+    <span>Yamaha</span><span>·</span><span>AKT</span><span>·</span><span>Honda</span><span>·</span><span>Victory</span><span>·</span><span>Suzuki</span><span>·</span><span>Bajaj</span><span>·</span><span>KTM</span><span>·</span><span>BMW</span><span>·</span><span>Hero</span><span>·</span><span>Voge</span><span>·</span>
+    <span>Yamaha</span><span>·</span><span>AKT</span><span>·</span><span>Honda</span><span>·</span><span>Victory</span><span>·</span><span>Suzuki</span><span>·</span><span>Bajaj</span><span>·</span><span>KTM</span><span>·</span><span>BMW</span><span>·</span><span>Hero</span><span>·</span><span>Voge</span><span>·</span>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="section" id="servicios">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Servicios</p>
+      <h2 class="section__title">Lo que hacemos en el taller</h2>
+      <p class="section__sub">Trabajo por cita, un vehículo a la vez. Así cuidamos cada detalle.</p>
+    </header>
+
+    <div class="grid grid--3">
+      <article class="card reveal">
+        <span class="card__num" aria-hidden="true">01</span>
+        <h3 class="card__title">Wrap completo</h3>
+        <p>Cambio total de color en vinilo premium: mate, satinado, brillante, camaleón o texturas tipo carbono.</p>
+        <ul class="card__list">
+          <li>Desarmado y rearmado de piezas</li>
+          <li>Reversible, protege la pintura</li>
+          <li>Garantía de instalación</li>
+        </ul>
+        <p class="card__price"><strong>$400.000</strong> <span>COP · moto completa</span></p>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num" aria-hidden="true">02</span>
+        <h3 class="card__title">Kit gráfico original</h3>
+        <p>Réplica exacta del kit de fábrica de tu moto, en vinilo impreso y laminado, listo para instalar.</p>
+        <ul class="card__list">
+          <li>Fiel al diseño de fábrica</li>
+          <li>Laminado UV anti-rayones</li>
+          <li>AKT, Yamaha, Honda, Suzuki y más</li>
+        </ul>
+        <p class="card__price"><strong>$90.000</strong> <span>COP · kit</span></p>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num" aria-hidden="true">03</span>
+        <h3 class="card__title">Kit gráfico personalizado</h3>
+        <p>Diseñamos tu gráfica desde cero: colores y formas a tu gusto. Una moto que no se repite con ninguna.</p>
+        <ul class="card__list">
+          <li>Diseño exclusivo para tu moto</li>
+          <li>Propuesta visual antes de imprimir</li>
+          <li>Tornasol, camaleón y holográfico</li>
+        </ul>
+        <p class="card__price"><strong>$160.000</strong> <span>COP · kit</span></p>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num" aria-hidden="true">04</span>
+        <h3 class="card__title">Calcomanías y stickers</h3>
+        <p>Vinilo de corte para logos, números, franjas, nombres, cascos y rótulos comerciales.</p>
+        <ul class="card__list">
+          <li>Corte de precisión por plotter</li>
+          <li>Vinilo reflectivo y holográfico</li>
+          <li>Entrega el mismo día</li>
+        </ul>
+        <p class="card__price">Desde <strong>$20.000</strong> <span>COP</span></p>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num" aria-hidden="true">05</span>
+        <h3 class="card__title">PPF · Película protectora</h3>
+        <p>Film transparente autoreparable contra piedras, insectos y micro-rayones en zonas de impacto.</p>
+        <ul class="card__list">
+          <li>Cubrimiento de la moto completa</li>
+          <li>Invisible, no altera el color</li>
+          <li>Hasta 7 años de vida útil</li>
+        </ul>
+        <p class="card__price"><strong>$500.000</strong> <span>COP · moto completa</span></p>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num" aria-hidden="true">06</span>
+        <h3 class="card__title">Rotulación comercial</h3>
+        <p>Flotas, motos de delivery y vehículos de empresa con identidad uniforme y montaje en el taller.</p>
+        <ul class="card__list">
+          <li>Precios por volumen</li>
+          <li>Diseño alineado a tu marca</li>
+          <li>Facturación empresarial</li>
+        </ul>
+        <p class="card__price"><strong>A cotización</strong></p>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num" aria-hidden="true">07</span>
+        <h3 class="card__title">Detalles y blackout</h3>
+        <p>Oscurecido de faros, cromos, llantas, cascos y accesorios para un acabado uniforme.</p>
+        <ul class="card__list">
+          <li>Blackout de emblemas</li>
+          <li>Vinilo para rines</li>
+          <li>Retoques y reparaciones</li>
+        </ul>
+        <p class="card__price"><strong>A cotización</strong></p>
+      </article>
+    </div>
+
+    <p class="section__note reveal">
+      Precios en pesos colombianos. El valor final puede variar según el estado de la pintura,
+      el tamaño del vehículo y el acabado del vinilo. La cotización es gratis.
+    </p>
+  </div>
+</section>
+
+<!-- ================= GALERÍA ================= -->
+<section class="section section--dark" id="galeria">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Portafolio</p>
+      <h2 class="section__title">Trabajos realizados</h2>
+      <p class="section__sub">Una muestra de lo que ha salido del taller este año.</p>
+    </header>
+
+    <div class="filters reveal">
+      <button class="filter is-active" data-filter="all" aria-pressed="true">Todos</button>
+      <button class="filter" data-filter="wrap" aria-pressed="false">Wrap completo</button>
+      <button class="filter" data-filter="graficos" aria-pressed="false">Gráficos</button>
+      <button class="filter" data-filter="rines" aria-pressed="false">Rines y calcomanías</button>
+    </div>
+
+    <!-- ================================================================
+         CÓMO AGREGAR UN TRABAJO
+
+         1. Guarda la foto en  assets/img/trabajos/
+            Nombre sin espacios ni tildes:  yamaha-xtz-150-graficos-tornasol.jpeg
+            Foto vertical (3:4). Sirve tal cual sale del celular.
+
+         2. Copia un bloque de abajo, pégalo y cambia:
+            - la ruta del src
+            - el alt (describe la foto: sirve para Google y para
+              quien no puede ver la imagen)
+            - data-brand y el <span class="shot__brand">  (la marca)
+            - el <h3> (la moto) y el <p> (el servicio)
+
+         3. data-cat debe ser uno de estos (igual a los botones de filtro):
+            wrap · graficos · rines
+
+            Si algún día hay fotos de PPF o blackout, se agrega el botón
+            <button class="filter" data-filter="ppf">PPF</button> arriba
+            y se usa data-cat="ppf" en las fotos. No hay que tocar nada más.
+
+         El loading="lazy" hace que cada foto se descargue solo cuando el
+         visitante llega a ella. No lo quites: es lo que mantiene la página
+         liviana en datos móviles.
+         ================================================================ -->
+    <div class="gallery" id="gallery">
+      <figure class="shot" data-cat="wrap" data-brand="AKT">
+        <img class="shot__img" loading="lazy" decoding="async"
+             src="assets/img/trabajos/akt-nkd-125-wrap-tornasol.jpeg"
+             alt="AKT NKD 125 con wrap tornasol morado y gráficos holográficos">
+        <span class="shot__brand">AKT</span>
+        <figcaption><h3>AKT NKD 125</h3><p>Wrap tornasol morado + gráficos holográficos</p></figcaption>
+      </figure>
+
+      <figure class="shot" data-cat="graficos" data-brand="Yamaha">
+        <img class="shot__img" loading="lazy" decoding="async"
+             src="assets/img/trabajos/yamaha-xtz-150-graficos-tornasol.jpeg"
+             alt="Yamaha XTZ 150 blanca con kit gráfico en vinilo tornasol">
+        <span class="shot__brand">Yamaha</span>
+        <figcaption><h3>Yamaha XTZ 150</h3><p>Kit gráfico en tornasol</p></figcaption>
+      </figure>
+
+      <figure class="shot" data-cat="wrap" data-brand="AKT">
+        <img class="shot__img" loading="lazy" decoding="async"
+             src="assets/img/trabajos/akt-special-110-wrap-camaleon.jpeg"
+             alt="AKT Special 110 con wrap camaleón gris y morado, vista frontal">
+        <span class="shot__brand">AKT</span>
+        <figcaption><h3>AKT Special 110</h3><p>Wrap camaleón gris–morado</p></figcaption>
+      </figure>
+
+      <figure class="shot" data-cat="rines" data-brand="Honda">
+        <img class="shot__img" loading="lazy" decoding="async"
+             src="assets/img/trabajos/honda-xr-190l-rines-calcomanias.jpeg"
+             alt="Honda XR 190L beige con calcomanías naranjas y rines forrados">
+        <span class="shot__brand">Honda</span>
+        <figcaption><h3>Honda XR 190L</h3><p>Forrado de rines y calcomanías</p></figcaption>
+      </figure>
+
+      <figure class="shot" data-cat="wrap" data-brand="Suzuki">
+        <img class="shot__img" loading="lazy" decoding="async"
+             src="assets/img/trabajos/suzuki-dr-150-wrap-gris.jpeg"
+             alt="Suzuki DR 150 con wrap gris y detalles en rojo">
+        <span class="shot__brand">Suzuki</span>
+        <figcaption><h3>Suzuki DR 150</h3><p>Wrap gris</p></figcaption>
+      </figure>
+
+      <figure class="shot" data-cat="graficos" data-brand="Honda">
+        <img class="shot__img" loading="lazy" decoding="async"
+             src="assets/img/trabajos/honda-wave-graficos-tornasol.jpeg"
+             alt="Honda Wave 110 gris con gráficos en vinilo morado tornasol">
+        <span class="shot__brand">Honda</span>
+        <figcaption><h3>Honda Wave 110</h3><p>Gráficos en morado tornasol</p></figcaption>
+      </figure>
+
+      <figure class="shot" data-cat="wrap" data-brand="AKT">
+        <img class="shot__img" loading="lazy" decoding="async"
+             src="assets/img/trabajos/akt-nkd-125-wrap-tornasol-2.jpeg"
+             alt="Detalle del tanque de una AKT NKD 125 con vinilo tornasol y letras holográficas">
+        <span class="shot__brand">AKT</span>
+        <figcaption><h3>AKT NKD 125</h3><p>Detalle del tanque en tornasol</p></figcaption>
+      </figure>
+
+      <figure class="shot" data-cat="rines" data-brand="Yamaha">
+        <img class="shot__img" loading="lazy" decoding="async"
+             src="assets/img/trabajos/yamaha-crypton-rin-tornasol.jpeg"
+             alt="Rin delantero de una Yamaha Crypton forrado en vinilo tornasol azul y morado">
+        <span class="shot__brand">Yamaha</span>
+        <figcaption><h3>Yamaha Crypton</h3><p>Rin forrado en tornasol</p></figcaption>
+      </figure>
+
+      <figure class="shot" data-cat="wrap" data-brand="AKT">
+        <img class="shot__img" loading="lazy" decoding="async"
+             src="assets/img/trabajos/akt-special-110-wrap-camaleon-2.jpeg"
+             alt="AKT Special 110 con wrap camaleón gris y morado, vista lateral completa">
+        <span class="shot__brand">AKT</span>
+        <figcaption><h3>AKT Special 110</h3><p>Wrap camaleón, vista lateral</p></figcaption>
+      </figure>
+    </div>
+
+    <p class="gallery__empty" id="galleryEmpty" hidden>
+      Todavía no hemos publicado trabajos en esta categoría. Escríbenos y te mostramos ejemplos.
+    </p>
+
+    <p class="gallery__note reveal">
+      ¿Quieres ver más? Publicamos cada entrega en
+      <a href="https://www.instagram.com/motografix02" target="_blank" rel="noopener">Instagram @motografix02</a>
+      y <a href="https://www.tiktok.com/@moto.grafix" target="_blank" rel="noopener">TikTok @moto.grafix</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ================= PROCESO ================= -->
+<section class="section" id="proceso">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2 class="section__title">De la idea a la calle en 4 pasos</h2>
+    </header>
+
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step__n">1</span>
+        <h3>Agendas</h3>
+        <p>Eliges día y hora en el formulario. Te confirmamos por WhatsApp en menos de 2 horas hábiles.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">2</span>
+        <h3>Diseñamos</h3>
+        <p>Definimos colores, acabado y gráfica. Recibes una vista previa antes de cortar el primer vinilo.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">3</span>
+        <h3>Instalamos</h3>
+        <p>Limpieza profunda, desarmado de piezas y aplicación en cabina libre de polvo.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">4</span>
+        <h3>Entregamos</h3>
+        <p>Revisión contigo, guía de cuidados y garantía por escrito. Tu vehículo listo para rodar.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= AGENDAR ================= -->
+<section class="section section--book" id="agendar">
+  <div class="container book">
+    <div class="book__intro reveal">
+      <p class="eyebrow">Reserva</p>
+      <h2 class="section__title">Agenda tu cita</h2>
+      <p class="section__sub">
+        Completa el formulario y te enviamos la confirmación por WhatsApp.
+        Sin anticipo: solo apartamos el cupo del día.
+      </p>
+
+      <ul class="book__facts">
+        <li>
+          <span class="ico ico--red" aria-hidden="true"></span>
+          <span>Lunes a sábado · 9:30 a.m. a 6:30 p.m. <em>jornada continua</em></span>
+        </li>
+        <li>
+          <span class="ico ico--blue" aria-hidden="true"></span>
+          <span>Carrera 15 # 49-72, Barrio Chapineros<br>Cali, Valle del Cauca — Colombia</span>
+        </li>
+        <li>
+          <span class="ico ico--yellow" aria-hidden="true"></span>
+          <span>No atendemos domingos ni días festivos</span>
+        </li>
+      </ul>
+
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Carrera+15+%2349-72+Cali+Valle+del+Cauca+Colombia" target="_blank" rel="noopener">
+        Ver ubicación en Google Maps →
+      </a>
+
+      <blockquote class="book__quote">
+        <p>“Dejé la moto un viernes y el lunes parecía otra. El detalle en las curvas del tanque es de otro nivel.”</p>
+        <cite>— Andrés M., Yamaha MT-03</cite>
+      </blockquote>
+    </div>
+
+    <form class="form reveal" id="bookingForm" novalidate>
+      <div class="form__row">
+        <div class="field">
+          <label for="nombre">Nombre completo *</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" placeholder="Ej. Ana Rodríguez" required>
+          <small class="field__error" data-error-for="nombre"></small>
+        </div>
+        <div class="field">
+          <label for="telefono">WhatsApp *</label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="Ej. 300 123 4567" required>
+          <small class="field__error" data-error-for="telefono"></small>
+        </div>
+      </div>
+
+      <div class="form__row">
+        <div class="field">
+          <label for="vehiculo">Tipo de vehículo *</label>
+          <select id="vehiculo" name="vehiculo" required>
+            <option value="">Selecciona…</option>
+            <option>Moto</option>
+            <option>Auto</option>
+            <option>Camioneta / SUV</option>
+            <option>Casco o accesorio</option>
+            <option>Flota / empresa</option>
+          </select>
+          <small class="field__error" data-error-for="vehiculo"></small>
+        </div>
+        <div class="field">
+          <label for="modelo">Marca y modelo</label>
+          <input type="text" id="modelo" name="modelo" placeholder="Ej. Honda CB190 2022">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="servicio">Servicio de interés *</label>
+        <select id="servicio" name="servicio" required>
+          <option value="">Selecciona…</option>
+          <option>Wrap completo — $400.000</option>
+          <option>Kit gráfico original — $90.000</option>
+          <option>Kit gráfico personalizado — $160.000</option>
+          <option>Calcomanías y stickers — desde $20.000</option>
+          <option>PPF moto completa — $500.000</option>
+          <option>Rotulación comercial — a cotización</option>
+          <option>Detalles y blackout — a cotización</option>
+          <option>No estoy seguro, necesito asesoría</option>
+        </select>
+        <small class="field__error" data-error-for="servicio"></small>
+      </div>
+
+      <div class="form__row">
+        <div class="field">
+          <label for="fecha">Fecha preferida *</label>
+          <input type="date" id="fecha" name="fecha" required>
+          <small class="field__error" data-error-for="fecha"></small>
+        </div>
+        <div class="field">
+          <label for="hora">Hora *</label>
+          <select id="hora" name="hora" required>
+            <option value="">Selecciona…</option>
+            <option>09:30</option><option>10:30</option><option>11:30</option>
+            <option>12:30</option><option>13:30</option><option>14:30</option>
+            <option>15:30</option><option>16:30</option><option>17:30</option>
+          </select>
+          <small class="field__error" data-error-for="hora"></small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="mensaje">Cuéntanos tu idea</label>
+        <textarea id="mensaje" name="mensaje" rows="3" placeholder="Colores, referencias, si ya tienes un diseño…"></textarea>
+      </div>
+
+      <div class="field field--check">
+        <label class="check">
+          <input type="checkbox" id="acepto" name="acepto" required>
+          <span>Acepto ser contactado por WhatsApp para confirmar la cita. *</span>
+        </label>
+        <small class="field__error" data-error-for="acepto"></small>
+      </div>
+
+      <button class="btn btn--primary btn--block" type="submit">Solicitar cita</button>
+      <p class="form__hint">* Campos obligatorios. Respondemos en horario laboral.</p>
+
+      <div class="form__success" id="formSuccess" hidden>
+        <h3>¡Tu solicitud está lista!</h3>
+        <p id="successText"></p>
+        <div class="form__success-actions">
+          <a class="btn btn--primary btn--sm" id="waLink" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+          <button class="btn btn--ghost btn--sm" type="button" id="resetForm">Hacer otra solicitud</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section" id="faq">
+  <div class="container container--narrow">
+    <header class="section__head reveal">
+      <p class="eyebrow">Dudas frecuentes</p>
+      <h2 class="section__title">Antes de agendar</h2>
+    </header>
+
+    <div class="faq">
+      <details class="reveal">
+        <summary>¿El wrap daña la pintura original?</summary>
+        <p>No. El vinilo se aplica sobre pintura de fábrica en buen estado y actúa como capa protectora. Al retirarlo con calor controlado, la pintura queda intacta.</p>
+      </details>
+      <details class="reveal">
+        <summary>¿Cuánto dura el trabajo en el taller?</summary>
+        <p>Una moto completa toma entre 1 y 2 días. Un auto, de 3 a 5 días. Calcomanías y kits pequeños salen el mismo día.</p>
+      </details>
+      <details class="reveal">
+        <summary>¿Puedo llevar mi propio diseño?</summary>
+        <p>Claro. Trabajamos con archivos vectoriales (AI, PDF, SVG) o partimos de tus referencias. También diseñamos desde cero sin costo adicional en wraps completos.</p>
+      </details>
+      <details class="reveal">
+        <summary>¿Cómo lavo el vehículo después?</summary>
+        <p>Lavado a mano con jabón neutro, sin cera abrasiva y sin hidrolavadora a menos de 40 cm. Te entregamos la guía completa de cuidados.</p>
+      </details>
+      <details class="reveal">
+        <summary>¿Necesito pagar por adelantado?</summary>
+        <p>No para agendar. En trabajos con impresión personalizada se solicita el 50% al aprobar el diseño.</p>
+      </details>
+      <details class="reveal">
+        <summary>¿Atienden domingos o festivos?</summary>
+        <p>No. El taller trabaja de lunes a sábado en jornada continua de 9:30 a.m. a 6:30 p.m. Los domingos y días festivos permanecemos cerrados.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta">
+  <div class="container cta__inner reveal">
+    <h2>¿Listo para cambiarle la cara a tu vehículo?</h2>
+    <p>Cupos limitados por semana. Reserva el tuyo hoy.</p>
+    <a class="btn btn--light" href="#agendar">Agendar cita</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contacto">
+  <div class="container footer__grid">
+    <div>
+      <!-- Logo apilado para el footer. -->
+      <a class="logo logo--footer" href="#inicio" aria-label="MotoGrafix, inicio">
+        <img class="logo__img logo__img--stacked" src="assets/img/logo-motografix-stacked.png" alt="MotoGrafix">
+        <span class="logo__fallback" hidden>
+          <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M4 23 L10 9 L16 18 L22 9 L28 23" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="logo__text">Moto<span>Grafix</span></span>
+        </span>
+      </a>
+      <p class="footer__about">Taller especializado en wrapping, vinilos y calcomanías para motos y vehículos en Cali. Trabajo artesanal, materiales certificados.</p>
+    </div>
+
+    <div>
+      <h3>Contacto</h3>
+      <ul class="footer__list">
+        <li><a href="https://wa.me/573243836054" target="_blank" rel="noopener">WhatsApp 324 383 6054</a></li>
+        <li><a href="tel:+573243836054">Llamar al 324 383 6054</a></li>
+        <li><a href="https://www.instagram.com/motografix02" target="_blank" rel="noopener">Instagram @motografix02</a></li>
+        <li><a href="https://www.tiktok.com/@moto.grafix" target="_blank" rel="noopener">TikTok @moto.grafix</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Taller</h3>
+      <ul class="footer__list">
+        <li>Carrera 15 # 49-72</li>
+        <li>Barrio Chapineros</li>
+        <li>Cali, Valle del Cauca — Colombia</li>
+        <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Carrera+15+%2349-72+Cali+Valle+del+Cauca+Colombia" target="_blank" rel="noopener">Cómo llegar →</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Horario</h3>
+      <ul class="footer__list">
+        <li>Lunes a sábado</li>
+        <li>9:30 a.m. – 6:30 p.m.</li>
+        <li>Jornada continua</li>
+        <li>Domingos y festivos · cerrado</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <p>© <span id="year"></span> MotoGrafix. Todos los derechos reservados.</p>
+    <p>Cali, Valle del Cauca — Colombia</p>
+  </div>
+</footer>
+
+<!-- ================= VISOR DE FOTOS ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Trabajo ampliado" hidden>
+  <button class="lightbox__close" id="lbClose" aria-label="Cerrar">&times;</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
+  <figure class="lightbox__stage">
+    <img class="lightbox__img" id="lbImg" alt="">
+    <figcaption class="lightbox__caption">
+      <span class="lightbox__brand" id="lbBrand"></span>
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+      <span class="lightbox__count" id="lbCount"></span>
+    </figcaption>
+  </figure>
+  <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Siguiente">&#8250;</button>
+</div>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.25 8.24a8.24 8.24 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24m-4.5 4.4c-.21 0-.55.08-.84.39s-1.1 1.08-1.1 2.62 1.13 3.04 1.29 3.25 2.19 3.35 5.32 4.56c2.6 1 3.13.8 3.69.75.56-.05 1.82-.74 2.08-1.46s.26-1.34.18-1.47c-.08-.13-.29-.21-.6-.36s-1.82-.9-2.11-1-.49-.15-.7.16-.8 1-.98 1.21-.36.23-.67.08a8.4 8.4 0 0 1-2.48-1.53 9.3 9.3 0 0 1-1.72-2.14c-.18-.31 0-.48.14-.63.14-.14.31-.36.47-.54s.21-.31.31-.52.05-.39-.03-.54-.7-1.7-.96-2.33c-.25-.61-.51-.53-.7-.54z"/></svg>
+</a>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

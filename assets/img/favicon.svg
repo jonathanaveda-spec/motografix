@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="13" fill="#0C0E14"/>
+  <!-- M -->
+  <path d="M13 46 L18.5 18 L25 18 L29.5 32 L34 18 L40.5 18 L35 46 L29.5 46 L32 33 L28.5 43 L25 33 L22.5 46 Z"
+        fill="#FFFFFF" stroke="#E5202E" stroke-width="2.6" stroke-linejoin="round"/>
+  <!-- G -->
+  <path d="M55 24 H45 a6 6 0 0 0 -5.9 4.8 l-1.4 7 A5 5 0 0 0 42.6 42 H48 l1.3 -7 H45"
+        fill="none" stroke="#E5202E" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M55 24 H45 a6 6 0 0 0 -5.9 4.8 l-1.4 7 A5 5 0 0 0 42.6 42 H48 l1.3 -7 H45"
+        fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Franja tricolor -->
+  <rect x="13" y="51" width="12" height="3" rx="1.5" fill="#E5202E"/>
+  <rect x="26" y="51" width="12" height="3" rx="1.5" fill="#FFC300"/>
+  <rect x="39" y="51" width="12" height="3" rx="1.5" fill="#29ABE2"/>
+</svg>

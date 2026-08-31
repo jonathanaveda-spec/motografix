@@ -1,0 +1,20 @@
+Aqui van las fotos de los trabajos del portafolio.
+
+FORMATO
+  - Foto VERTICAL (3:4). Sirve tal cual sale del celular.
+  - Peso ideal por debajo de 300 KB. Si pesa mas, comprimela en squoosh.app
+  - JPG / JPEG
+
+NOMBRE DEL ARCHIVO
+  - Sin espacios, sin tildes, todo en minusculas
+  - Formato: marca-modelo-servicio.jpeg
+  - Ejemplos:
+      yamaha-xtz-150-graficos-tornasol.jpeg   SI
+      akt-nkd-125-wrap-tornasol.jpeg          SI
+      Yamaha XTZ graficos.jpeg                NO (espacios y mayusculas)
+      honda-wave-grafico-morado.jpeg          SI
+
+DESPUES DE GUARDAR LA FOTO
+  Agrega el bloque <figure> en index.html. Mira el comentario
+  "COMO AGREGAR UN TRABAJO" justo encima de la galeria: esta la
+  plantilla lista para copiar y pegar.
