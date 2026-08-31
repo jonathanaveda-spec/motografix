@@ -517,18 +517,24 @@
       <!-- Trampa antispam: invisible para las personas, los bots la llenan -->
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-      <button class="btn btn--primary btn--block" type="submit">Solicitar cita</button>
-      <p class="form__hint">* Campos obligatorios. Respondemos en horario laboral.</p>
+      <button class="btn btn--primary btn--block" type="submit">
+        <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.25 8.24a8.24 8.24 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24m-4.5 4.4c-.21 0-.55.08-.84.39s-1.1 1.08-1.1 2.62 1.13 3.04 1.29 3.25 2.19 3.35 5.32 4.56c2.6 1 3.13.8 3.69.75.56-.05 1.82-.74 2.08-1.46s.26-1.34.18-1.47c-.08-.13-.29-.21-.6-.36s-1.82-.9-2.11-1-.49-.15-.7.16-.8 1-.98 1.21-.36.23-.67.08a8.4 8.4 0 0 1-2.48-1.53 9.3 9.3 0 0 1-1.72-2.14c-.18-.31 0-.48.14-.63.14-.14.31-.36.47-.54s.21-.31.31-.52.05-.39-.03-.54-.7-1.7-.96-2.33c-.25-.61-.51-.53-.7-.54z"/></svg>
+        Agendar por WhatsApp
+      </button>
+      <p class="form__hint">* Campos obligatorios. Se abrirá WhatsApp con el resumen de tu cita.</p>
 
       <div class="form__success" id="formSuccess" hidden>
-        <h3>¡Tu solicitud está lista!</h3>
+        <h3>¡Solicitud recibida!</h3>
         <p id="successText"></p>
         <p class="form__warn" id="successMailWarn" hidden>
           No pudimos registrar tu solicitud automáticamente. Envíala por WhatsApp
           para que no se pierda.
         </p>
+        <p class="form__fallback">
+          ¿No se abrió WhatsApp?
+          <a id="waLink" href="#" target="_blank" rel="noopener">Ábrelo aquí</a>
+        </p>
         <div class="form__success-actions">
-          <a class="btn btn--primary btn--sm" id="waLink" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
           <button class="btn btn--ghost btn--sm" type="button" id="resetForm">Hacer otra solicitud</button>
         </div>
       </div>

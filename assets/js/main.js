@@ -451,13 +451,21 @@
       '• Fecha: ' + fechaLarga + ' a las ' + data.hora + '\n' +
       (data.mensaje ? '• Detalles: ' + data.mensaje + '\n' : '');
 
-    if (waLink) {
-      waLink.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto);
-    }
+    const urlWhatsApp = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto);
+
+    /* WhatsApp se abre AQUÍ, dentro del mismo gesto del clic. Si se abriera
+       después de esperar la respuesta del correo, el navegador lo tomaría
+       como ventana emergente y lo bloquearía. Por eso va primero y el
+       correo viaja después.
+       El enlace del panel queda como salida por si aun así lo bloquean. */
+    window.open(urlWhatsApp, '_blank', 'noopener');
+    if (waLink) waLink.href = urlWhatsApp;
+
     if (successText) {
       successText.textContent =
-        data.nombre.split(' ')[0] + ', apartamos ' + fechaLarga + ' a las ' + data.hora +
-        '. Envíanos el resumen por WhatsApp y confirmamos el cupo en menos de 2 horas hábiles.';
+        data.nombre.split(' ')[0] + ', anotamos tu cita para el ' + fechaLarga +
+        ' a las ' + data.hora + '. Te abrimos WhatsApp con el resumen: envíalo y ' +
+        'te confirmamos el cupo en menos de 2 horas hábiles.';
     }
 
     if (avisoCorreo) avisoCorreo.hidden = true;

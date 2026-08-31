@@ -597,6 +597,16 @@ body.is-locked{
 }
 .form__warn[hidden]{ display:none; }
 
+.btn__ico{ width:19px; height:19px; flex:none; }
+
+/* Salida por si el navegador bloquea la apertura de WhatsApp */
+.form__fallback{ margin-bottom:16px; font-size:.83rem; color:var(--gray); }
+.form__fallback a{
+  color:var(--blue); font-weight:600;
+  border-bottom:1px solid transparent; transition:border-color .18s;
+}
+.form__fallback a:hover{ border-bottom-color:var(--blue); }
+
 .form__success{
   border-radius:var(--radius-sm); border:1px solid var(--line);
   border-top:3px solid var(--blue);
