@@ -61,7 +61,6 @@
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="container hero__inner">
     <div class="hero__content">
-      <p class="eyebrow reveal">Taller de wrapping y vinilos · Cali, Valle del Cauca</p>
       <h1 class="hero__title reveal">
         Tu moto.<br>
         Tu estilo.<br>
@@ -75,38 +74,112 @@
       <div class="hero__actions reveal">
         <a class="btn btn--primary" href="#agendar">Agendar mi cita</a>
         <a class="btn btn--ghost" href="#galeria">Ver trabajos</a>
+        <ul class="hero__stats">
+          <li><strong>+600</strong><span>vehículos</span></li>
+          <li><strong>3 años</strong><span>garantía</span></li>
+        </ul>
       </div>
-
-      <ul class="hero__stats reveal">
-        <li><strong>+600</strong><span>Vehículos intervenidos</span></li>
-        <li><strong>3 años</strong><span>Garantía en vinilo</span></li>
-        <li><strong>Lun a Sáb</strong><span>Jornada continua 9:30 – 6:30</span></li>
-      </ul>
     </div>
 
-    <!--
-      Estas 3 fotos son las mismas de la galería: el navegador las guarda en
-      caché y no las vuelve a descargar más abajo. Si las cambias, usa fotos
-      que ya estén en el portafolio para no sumar peso a la primera carga.
-    -->
-    <div class="hero__visual reveal">
-      <figure class="hero__shot hero__shot--1">
-        <img src="assets/img/trabajos/akt-special-110-wrap-camaleon.jpeg"
-             alt="AKT Special 110 con wrap camaleón gris y morado" decoding="async">
-        <figcaption><span class="tag tag--red">Wrap completo</span></figcaption>
-      </figure>
+    <!-- ================================================================
+         MUESTRARIO DE ACABADOS
 
-      <figure class="hero__shot hero__shot--2">
-        <img src="assets/img/trabajos/akt-nkd-125-wrap-tornasol-2.jpeg"
-             alt="Detalle del tanque de una AKT NKD 125 en vinilo tornasol" loading="lazy" decoding="async">
-        <figcaption><span class="tag tag--blue">Gráficos</span></figcaption>
-      </figure>
+         Cada pestaña es un acabado real que se instala en el taller, no
+         una maqueta: la foto, la moto y el precio del panel activo son de
+         un trabajo que salió del taller. Para agregar un acabado nuevo,
+         copia un <div class="swatchbook__panel"> completo, cambia su foto
+         (ya subida a assets/img/trabajos/), el data-panel y añade su
+         pestaña correspondiente arriba con el mismo data-swatch.
+         ================================================================ -->
+    <div class="swatchbook reveal" aria-label="Muestrario de acabados">
+      <ul class="swatchbook__tabs" role="tablist" aria-label="Acabados disponibles">
+        <li role="presentation">
+          <button class="swatchbook__tab is-active" id="tabTornasol" data-swatch="tornasol"
+                  role="tab" aria-selected="true" aria-controls="panelTornasol">
+            <span class="swatchbook__chip swatchbook__chip--tornasol" aria-hidden="true"></span>
+            Tornasol
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="swatchbook__tab" id="tabCamaleon" data-swatch="camaleon"
+                  role="tab" aria-selected="false" aria-controls="panelCamaleon" tabindex="-1">
+            <span class="swatchbook__chip swatchbook__chip--camaleon" aria-hidden="true"></span>
+            Camaleón
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="swatchbook__tab" id="tabGris" data-swatch="gris"
+                  role="tab" aria-selected="false" aria-controls="panelGris" tabindex="-1">
+            <span class="swatchbook__chip swatchbook__chip--gris" aria-hidden="true"></span>
+            Gris
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="swatchbook__tab" id="tabRines" data-swatch="rines"
+                  role="tab" aria-selected="false" aria-controls="panelRines" tabindex="-1">
+            <span class="swatchbook__chip swatchbook__chip--rines" aria-hidden="true"></span>
+            Rines y calcomanías
+          </button>
+        </li>
+      </ul>
 
-      <figure class="hero__shot hero__shot--3">
-        <img src="assets/img/trabajos/yamaha-crypton-rin-tornasol.jpeg"
-             alt="Rin de una Yamaha Crypton forrado en vinilo tornasol" loading="lazy" decoding="async">
-        <figcaption><span class="tag tag--yellow">Rines</span></figcaption>
-      </figure>
+      <div class="swatchbook__panels">
+        <article class="swatchbook__panel is-active" id="panelTornasol" data-panel="tornasol"
+                  role="tabpanel" aria-labelledby="tabTornasol">
+          <figure class="swatchbook__photo">
+            <img src="assets/img/trabajos/akt-nkd-125-wrap-tornasol.jpeg"
+                 alt="AKT NKD 125 con wrap tornasol morado y gráficos holográficos" decoding="async">
+          </figure>
+          <div class="swatchbook__case">
+            <span class="swatchbook__brand">AKT NKD 125</span>
+            <p class="swatchbook__desc">Wrap tornasol morado + gráficos holográficos.</p>
+            <p class="swatchbook__price"><strong>$400.000</strong> <span>COP · wrap completo</span></p>
+            <a class="btn btn--primary btn--sm" href="#agendar" data-service="Wrap completo — $400.000">Agendar este acabado</a>
+          </div>
+        </article>
+
+        <article class="swatchbook__panel" id="panelCamaleon" data-panel="camaleon"
+                  role="tabpanel" aria-labelledby="tabCamaleon" hidden>
+          <figure class="swatchbook__photo">
+            <img src="assets/img/trabajos/akt-special-110-wrap-camaleon.jpeg"
+                 alt="AKT Special 110 con wrap camaleón gris y morado" decoding="async">
+          </figure>
+          <div class="swatchbook__case">
+            <span class="swatchbook__brand">AKT Special 110</span>
+            <p class="swatchbook__desc">Wrap camaleón gris–morado, cambia de tono según la luz.</p>
+            <p class="swatchbook__price"><strong>$400.000</strong> <span>COP · wrap completo</span></p>
+            <a class="btn btn--primary btn--sm" href="#agendar" data-service="Wrap completo — $400.000">Agendar este acabado</a>
+          </div>
+        </article>
+
+        <article class="swatchbook__panel" id="panelGris" data-panel="gris"
+                  role="tabpanel" aria-labelledby="tabGris" hidden>
+          <figure class="swatchbook__photo">
+            <img src="assets/img/trabajos/suzuki-dr-150-wrap-gris.jpeg"
+                 alt="Suzuki DR 150 con wrap gris y detalles en rojo" decoding="async">
+          </figure>
+          <div class="swatchbook__case">
+            <span class="swatchbook__brand">Suzuki DR 150</span>
+            <p class="swatchbook__desc">Wrap gris con detalles en rojo.</p>
+            <p class="swatchbook__price"><strong>$400.000</strong> <span>COP · wrap completo</span></p>
+            <a class="btn btn--primary btn--sm" href="#agendar" data-service="Wrap completo — $400.000">Agendar este acabado</a>
+          </div>
+        </article>
+
+        <article class="swatchbook__panel" id="panelRines" data-panel="rines"
+                  role="tabpanel" aria-labelledby="tabRines" hidden>
+          <figure class="swatchbook__photo">
+            <img src="assets/img/trabajos/honda-xr-190l-rines-calcomanias.jpeg"
+                 alt="Honda XR 190L beige con calcomanías naranjas y rines forrados" decoding="async">
+          </figure>
+          <div class="swatchbook__case">
+            <span class="swatchbook__brand">Honda XR 190L</span>
+            <p class="swatchbook__desc">Forrado de rines y calcomanías a medida.</p>
+            <p class="swatchbook__price">Desde <strong>$20.000</strong> <span>COP</span></p>
+            <a class="btn btn--primary btn--sm" href="#agendar" data-service="Calcomanías y stickers — desde $20.000">Agendar este acabado</a>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -125,7 +198,6 @@
   <div class="container">
     <header class="section__head section__head--cta reveal">
       <div class="section__head-txt">
-        <p class="eyebrow">Servicios</p>
         <h2 class="section__title">Lo que hacemos en el taller</h2>
         <p class="section__sub">Trabajo por cita, un vehículo a la vez. Así cuidamos cada detalle.</p>
       </div>
@@ -134,7 +206,7 @@
 
     <div class="grid grid--3">
       <article class="card reveal">
-        <span class="card__num" aria-hidden="true">01</span>
+        <span class="card__chip card__chip--wrap" aria-hidden="true"></span>
         <h3 class="card__title">Wrap completo</h3>
         <p>Cambio total de color en vinilo premium: mate, satinado, brillante, camaleón o texturas tipo carbono.</p>
         <ul class="card__list">
@@ -146,7 +218,7 @@
       </article>
 
       <article class="card reveal">
-        <span class="card__num" aria-hidden="true">02</span>
+        <span class="card__chip card__chip--original" aria-hidden="true"></span>
         <h3 class="card__title">Kit gráfico original</h3>
         <p>Réplica exacta del kit de fábrica de tu moto, en vinilo impreso y laminado, listo para instalar.</p>
         <ul class="card__list">
@@ -158,7 +230,7 @@
       </article>
 
       <article class="card reveal">
-        <span class="card__num" aria-hidden="true">03</span>
+        <span class="card__chip card__chip--custom" aria-hidden="true"></span>
         <h3 class="card__title">Kit gráfico personalizado</h3>
         <p>Diseñamos tu gráfica desde cero: colores y formas a tu gusto. Una moto que no se repite con ninguna.</p>
         <ul class="card__list">
@@ -170,7 +242,7 @@
       </article>
 
       <article class="card reveal">
-        <span class="card__num" aria-hidden="true">04</span>
+        <span class="card__chip card__chip--stickers" aria-hidden="true"></span>
         <h3 class="card__title">Calcomanías y stickers</h3>
         <p>Vinilo de corte para logos, números, franjas, nombres, cascos y rótulos comerciales.</p>
         <ul class="card__list">
@@ -183,7 +255,7 @@
       </article>
 
       <article class="card reveal">
-        <span class="card__num" aria-hidden="true">05</span>
+        <span class="card__chip card__chip--ppf" aria-hidden="true"></span>
         <h3 class="card__title">PPF · Película protectora</h3>
         <p>Film transparente autoreparable contra piedras, insectos y micro-rayones en zonas de impacto.</p>
         <ul class="card__list">
@@ -195,7 +267,7 @@
       </article>
 
       <article class="card reveal">
-        <span class="card__num" aria-hidden="true">06</span>
+        <span class="card__chip card__chip--flota" aria-hidden="true"></span>
         <h3 class="card__title">Rotulación comercial</h3>
         <p>Flotas, motos de delivery y vehículos de empresa con identidad uniforme y montaje en el taller.</p>
         <ul class="card__list">
@@ -207,7 +279,7 @@
       </article>
 
       <article class="card reveal">
-        <span class="card__num" aria-hidden="true">07</span>
+        <span class="card__chip card__chip--blackout" aria-hidden="true"></span>
         <h3 class="card__title">Detalles y blackout</h3>
         <p>Oscurecido de faros, cromos, llantas, cascos y accesorios para un acabado uniforme.</p>
         <ul class="card__list">
@@ -231,7 +303,6 @@
   <div class="container">
     <header class="section__head section__head--cta reveal">
       <div class="section__head-txt">
-        <p class="eyebrow">Portafolio</p>
         <h2 class="section__title">Trabajos realizados</h2>
         <p class="section__sub">Una muestra de lo que ha salido del taller este año.</p>
       </div>
@@ -360,7 +431,6 @@
 <section class="section" id="proceso">
   <div class="container">
     <header class="section__head reveal">
-      <p class="eyebrow">Cómo trabajamos</p>
       <h2 class="section__title">De la idea a la calle en 4 pasos</h2>
     </header>
 
@@ -393,7 +463,6 @@
 <section class="section section--book" id="agendar">
   <div class="container book">
     <div class="book__intro reveal">
-      <p class="eyebrow">Reserva</p>
       <h2 class="section__title">Agenda tu cita</h2>
       <p class="section__sub">
         Completa el formulario y te enviamos la confirmación por WhatsApp.
@@ -552,7 +621,6 @@
 <section class="section" id="faq">
   <div class="container container--narrow">
     <header class="section__head reveal">
-      <p class="eyebrow">Dudas frecuentes</p>
       <h2 class="section__title">Antes de agendar</h2>
     </header>
 

@@ -130,6 +130,53 @@
     sections.forEach((s) => spy.observe(s));
   }
 
+  /* ---------- Muestrario de acabados (hero) ---------- */
+  const swatchTabs = $$('.swatchbook__tab');
+  const swatchPanels = $$('.swatchbook__panel');
+  if (swatchTabs.length && swatchPanels.length) {
+    const abrirSwatch = (id) => {
+      swatchTabs.forEach((tab) => {
+        const activo = tab.dataset.swatch === id;
+        tab.classList.toggle('is-active', activo);
+        tab.setAttribute('aria-selected', String(activo));
+        tab.tabIndex = activo ? 0 : -1;
+      });
+      swatchPanels.forEach((panel) => {
+        const activo = panel.dataset.panel === id;
+        panel.classList.toggle('is-active', activo);
+        panel.hidden = !activo;
+      });
+    };
+    swatchTabs.forEach((tab) => {
+      tab.addEventListener('click', () => abrirSwatch(tab.dataset.swatch));
+    });
+    /* Flechas para moverse entre pestañas, como cualquier tablist */
+    const swatchTabsEl = $('.swatchbook__tabs');
+    if (swatchTabsEl) {
+      swatchTabsEl.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const actual = swatchTabs.findIndex((t) => t.classList.contains('is-active'));
+        const paso = e.key === 'ArrowRight' ? 1 : -1;
+        const siguiente = swatchTabs[(actual + paso + swatchTabs.length) % swatchTabs.length];
+        abrirSwatch(siguiente.dataset.swatch);
+        siguiente.focus();
+      });
+    }
+  }
+
+  /* Cualquier botón "Agendar este acabado" precarga el servicio en el
+     formulario, para que el cliente no tenga que volver a elegirlo. */
+  const servicioSelect = $('#servicio');
+  if (servicioSelect) {
+    $$('[data-service]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const valor = btn.dataset.service;
+        const existe = Array.from(servicioSelect.options).some((o) => o.value === valor);
+        if (existe) servicioSelect.value = valor;
+      });
+    });
+  }
+
   /* ---------- Galería: filtros + visor ---------- */
   const filters = $$('.filter');
   const shots = $$('.shot');
