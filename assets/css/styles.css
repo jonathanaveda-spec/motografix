@@ -399,7 +399,16 @@ section[id], footer[id]{ scroll-margin-top:calc(var(--header-h) + 12px); }
   margin:0 !important; max-width:100% !important;
   height:100% !important; min-height:0 !important;
 }
-.tt__frame iframe{ display:block; width:100% !important; height:100% !important; border:0; }
+/* El max-height NO es redundante. embed.js escribe en línea
+   `height:1px; max-height:1px` sobre el iframe mientras espera a que
+   TikTok le reporte su tamaño. Nuestro height gana por !important, pero
+   un max-height sin !important igual recorta el resultado: el iframe se
+   quedaba en 1px de alto y la tarjeta salía vacía. */
+.tt__frame iframe{
+  display:block; border:0;
+  width:100% !important; height:100% !important;
+  max-height:none !important; min-height:0 !important;
+}
 
 /* Antes de que TikTok responda, el blockquote solo contiene un enlace de
    texto. Lo escondemos para no mostrar un "@moto.grafix" suelto. */
