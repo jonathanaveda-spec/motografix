@@ -177,79 +177,162 @@
     });
   }
 
-  /* ---------- Feed de TikTok ----------
+  /* ---------- Galería: filtros + visor ---------- */
+  const filters = $$('.filter');
+  const shots = $$('.shot');
+  const galleryEmpty = $('#galleryEmpty');
 
-     El script de TikTok pesa y hace sus propias peticiones, así que NO se
-     carga al abrir la página: esperamos a que el visitante se acerque a la
-     sección. Si nunca baja hasta el portafolio, nunca se descarga.
+  /* Cada trabajo se comporta como un botón (solo si hay JS, que es
+     lo único que hace funcionar el visor). */
+  shots.forEach((shot, i) => {
+    shot.tabIndex = 0;
+    shot.setAttribute('role', 'button');
+    const titulo = shot.querySelector('h3');
+    shot.setAttribute('aria-label', 'Ver ' + (titulo ? titulo.textContent : 'trabajo ' + (i + 1)) + ' en grande');
+  });
 
-     TikTok reemplaza el <blockquote> por un <iframe>. Eso es lo único que
-     podemos mirar desde fuera para saber si cargó: el iframe es de otro
-     dominio, así que el navegador no nos deja ver su contenido ni nos avisa
-     si falló.
+  const visibles = () => shots.filter((s) => !s.classList.contains('is-hidden'));
 
-     Si a los 10 segundos no apareció el iframe, mostramos el respaldo. Pasa
-     cuando la cuenta está privada, cuando TikTok responde con su protección
-     de sobrecarga, o cuando el visitante tiene un bloqueador de rastreadores
-     (Brave y Firefox lo traen activado por defecto).
-  */
-  const ttFrame = $('#ttFrame');
-  if (ttFrame) {
-    const ttLoading = $('#ttLoading');
-    const ttFallback = $('#ttFallback');
-    let lanzado = false;
+  filters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.filter;
 
-    const ocultarCargando = () => {
-      if (ttLoading) ttLoading.hidden = true;
-    };
+      filters.forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
 
-    const mostrarRespaldo = () => {
-      ocultarCargando();
-      ttFrame.hidden = true;
-      if (ttFallback) ttFallback.hidden = false;
-    };
-
-    const cargar = () => {
-      if (lanzado) return;
-      lanzado = true;
-
-      const script = document.createElement('script');
-      script.src = 'https://www.tiktok.com/embed.js';
-      script.async = true;
-      script.onerror = mostrarRespaldo;
-      document.body.appendChild(script);
-
-      /* Revisamos cada 400 ms si TikTok ya insertó su iframe. */
-      const LIMITE = 10000;
-      const inicio = Date.now();
-      const revisar = setInterval(() => {
-        if (ttFrame.querySelector('iframe')) {
-          clearInterval(revisar);
-          ocultarCargando();
-          ttFrame.classList.add('is-ready');
-        } else if (Date.now() - inicio > LIMITE) {
-          clearInterval(revisar);
-          mostrarRespaldo();
+      shots.forEach((shot) => {
+        const show = cat === 'all' || shot.dataset.cat === cat;
+        shot.classList.toggle('is-hidden', !show);
+        shot.classList.remove('is-entering');
+        if (show) {
+          // reinicia la animación
+          void shot.offsetWidth;
+          shot.classList.add('is-entering');
         }
-      }, 400);
+      });
+
+      if (galleryEmpty) galleryEmpty.hidden = visibles().length > 0;
+    });
+  });
+
+  /* ---------- Visor de fotos ---------- */
+  const lb = $('#lightbox');
+  if (lb) {
+    const lbImg = $('#lbImg');
+    const lbBrand = $('#lbBrand');
+    const lbTitle = $('#lbTitle');
+    const lbDesc = $('#lbDesc');
+    const lbCount = $('#lbCount');
+    const lbClose = $('#lbClose');
+    const lbPrev = $('#lbPrev');
+    const lbNext = $('#lbNext');
+
+    let lista = [];       // trabajos visibles en el momento de abrir
+    let indice = 0;
+    let disparador = null; // elemento que abrió el visor, para devolverle el foco
+
+    const pintar = () => {
+      const shot = lista[indice];
+      if (!shot) return;
+
+      const foto = shot.querySelector('.shot__img');
+      if (foto) {
+        lbImg.src = foto.currentSrc || foto.src;
+        lbImg.alt = foto.alt;
+      }
+
+      const titulo = shot.querySelector('h3');
+      const desc = shot.querySelector('figcaption p');
+      lbBrand.textContent = shot.dataset.brand || '';
+      lbTitle.textContent = titulo ? titulo.textContent : '';
+      lbDesc.textContent = desc ? desc.textContent : '';
+      lbCount.textContent = (indice + 1) + ' de ' + lista.length;
+
+      const solaFoto = lista.length < 2;
+      lbPrev.hidden = solaFoto;
+      lbNext.hidden = solaFoto;
     };
 
-    const seccion = $('#galeria');
-    if ('IntersectionObserver' in window && seccion) {
-      /* 400px de margen: empieza a cargar justo antes de que la sección
-         entre en pantalla, para que al llegar ya esté lista. */
-      const obs = new IntersectionObserver((entradas) => {
-        entradas.forEach((entrada) => {
-          if (entrada.isIntersecting) {
-            cargar();
-            obs.disconnect();
-          }
-        });
-      }, { rootMargin: '400px' });
-      obs.observe(seccion);
-    } else {
-      cargar();
-    }
+    let scrollGuardado = 0;
+
+    const abrir = (shot) => {
+      lista = visibles();
+      indice = lista.indexOf(shot);
+      if (indice < 0) return;
+      disparador = shot;
+      pintar();
+      lb.hidden = false;
+
+      // Fija el body en su posición actual para que el fondo no se mueva
+      scrollGuardado = window.scrollY;
+      document.body.style.top = -scrollGuardado + 'px';
+      document.body.classList.add('is-locked');
+
+      lbClose.focus();
+    };
+
+    const cerrar = () => {
+      lb.hidden = true;
+      document.body.classList.remove('is-locked');
+      document.body.style.top = '';
+      window.scrollTo(0, scrollGuardado);
+      if (disparador) disparador.focus({ preventScroll: true });
+    };
+
+    const mover = (paso) => {
+      if (lista.length < 2) return;
+      indice = (indice + paso + lista.length) % lista.length;
+      pintar();
+    };
+
+    shots.forEach((shot) => {
+      shot.addEventListener('click', () => abrir(shot));
+      shot.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          abrir(shot);
+        }
+      });
+    });
+
+    lbClose.addEventListener('click', cerrar);
+    lbPrev.addEventListener('click', () => mover(-1));
+    lbNext.addEventListener('click', () => mover(1));
+
+    // Clic en el fondo cierra; clic en la foto o los textos, no
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) cerrar();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') cerrar();
+      else if (e.key === 'ArrowLeft') mover(-1);
+      else if (e.key === 'ArrowRight') mover(1);
+    });
+
+    /* Deslizar con el dedo para cambiar de foto (y hacia abajo para cerrar) */
+    let tX = 0, tY = 0;
+    lb.addEventListener('touchstart', (e) => {
+      tX = e.changedTouches[0].clientX;
+      tY = e.changedTouches[0].clientY;
+    }, { passive: true });
+
+    lb.addEventListener('touchend', (e) => {
+      const dX = e.changedTouches[0].clientX - tX;
+      const dY = e.changedTouches[0].clientY - tY;
+      const UMBRAL = 50;
+
+      if (Math.abs(dX) > Math.abs(dY)) {
+        if (dX < -UMBRAL) mover(1);        // desliza a la izquierda → siguiente
+        else if (dX > UMBRAL) mover(-1);   // desliza a la derecha → anterior
+      } else if (dY > 90) {
+        cerrar();                          // desliza hacia abajo → cerrar
+      }
+    }, { passive: true });
   }
 
   /* ---------- Formulario de citas ---------- */
