@@ -431,8 +431,26 @@ section[id], footer[id]{ scroll-margin-top:calc(var(--header-h) + 12px); }
   border:1px dashed rgba(255,255,255,.2); border-radius:var(--radius);
   color:var(--gray-2); font-size:.95rem;
 }
-.gallery__note{ margin-top:28px; color:var(--gray-2); font-size:.92rem; }
-.gallery__note a{ color:var(--yellow); border-bottom:1px solid currentColor; }
+/* Invitación a las redes, al pie del portafolio. La franja tornasol de
+   arriba la separa de la rejilla de fotos sin meter otra línea divisoria. */
+.social{
+  margin-top:34px; padding:30px;
+  display:flex; align-items:center; justify-content:space-between; gap:30px;
+  position:relative; overflow:hidden;
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--radius);
+}
+.social::before{
+  content:''; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg, var(--iri-1), var(--iri-2), var(--iri-3));
+}
+.social__eyebrow{
+  font-size:.72rem; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gray);
+}
+.social h3{ margin-top:7px; font-size:1.3rem; font-weight:600; }
+.social p{ margin-top:9px; color:var(--gray-2); font-size:.95rem; max-width:56ch; }
+.social__actions{ display:flex; flex-wrap:wrap; gap:12px; flex:none; }
 
 /* ---------- Visor de fotos (lightbox) ---------- */
 .lightbox{
@@ -688,6 +706,10 @@ body.is-locked{
 
 /* ===================== TABLET / CELULAR ===================== */
 @media (max-width:760px){
+  /* La invitación a las redes se apila y los botones van a todo el ancho */
+  .social{ flex-direction:column; align-items:stretch; gap:22px; padding:24px; }
+  .social__actions .btn{ flex:1 1 auto; justify-content:center; }
+
   .burger{ display:block; padding:12px; margin-right:-12px; }
   .logo__img{ height:38px; }
   .logo__img--stacked{ height:72px; }

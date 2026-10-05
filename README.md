@@ -142,6 +142,30 @@ servicio. Se navega con las flechas ← → del teclado o los botones laterales,
 cierra con Esc, con la ✕ o haciendo clic en el fondo. Solo recorre los trabajos
 del filtro activo.
 
+### Por qué el TikTok no va incrustado
+
+Al pie del portafolio hay un bloque `.social` con botones a TikTok e Instagram.
+Son **enlaces normales, a propósito**.
+
+El 5 de octubre de 2026 se probó el *embed de creador* de TikTok en lugar de
+esta galería: traía los 10 videos más recientes y se actualizaba solo. Se
+revirtió el mismo día porque TikTok empezó a devolver su página de error
+`overload-protect triggered` **dentro del iframe**, y esa página quedaba a la
+vista en el sitio en vivo.
+
+Lo que lo vuelve inviable no es el error en sí, sino que **no se puede
+detectar**: desde la página solo se puede comprobar que el iframe exista, y
+existe. Su contenido es de otro dominio, así que el navegador no deja
+distinguir un feed que funciona de una página de error, y por tanto no hay
+forma de ocultarla y mostrar un respaldo.
+
+Si alguien quiere reintentarlo, el código completo está en los commits
+`fbba394` y `b7a9a76`, con dos trampas ya resueltas ahí: la altura tiene que
+definirla el CSS en cadena (TikTok declara el embed como `height:100%`), y hace
+falta `max-height:none !important` sobre el iframe porque `embed.js` le escribe
+`max-height:1px` en línea. Esa segunda **no se reproduce en local**, solo en
+producción.
+
 ## Las fotos del hero
 
 Las tres fotos superpuestas del encabezado (`<div class="hero__visual">`) son
