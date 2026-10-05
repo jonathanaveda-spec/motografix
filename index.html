@@ -298,131 +298,82 @@
   </div>
 </section>
 
-<!-- ================= GALERÍA ================= -->
+<!-- ================= GALERÍA (feed de TikTok) ================= -->
 <section class="section section--dark" id="galeria">
   <div class="container">
     <header class="section__head section__head--cta reveal">
       <div class="section__head-txt">
         <h2 class="section__title">Trabajos realizados</h2>
-        <p class="section__sub">Una muestra de lo que ha salido del taller este año.</p>
+        <p class="section__sub">Lo más reciente del taller, directo desde nuestro TikTok.</p>
       </div>
       <a class="btn btn--primary section__cta" href="#agendar">Agendar cita</a>
     </header>
 
-    <div class="filters reveal">
-      <button class="filter is-active" data-filter="all" aria-pressed="true">Todos</button>
-      <button class="filter" data-filter="wrap" aria-pressed="false">Wrap completo</button>
-      <button class="filter" data-filter="graficos" aria-pressed="false">Gráficos</button>
-      <button class="filter" data-filter="rines" aria-pressed="false">Rines y calcomanías</button>
-    </div>
-
     <!-- ================================================================
-         CÓMO AGREGAR UN TRABAJO
+         FEED DE TIKTOK
 
-         1. Guarda la foto en  assets/img/trabajos/
-            Nombre sin espacios ni tildes:  yamaha-xtz-150-graficos-tornasol.jpeg
-            Foto vertical (3:4). Sirve tal cual sale del celular.
+         Esto es el "embed de creador" oficial de TikTok. Muestra hasta los
+         10 videos más recientes de @moto.grafix y se actualiza solo: cuando
+         publicas un video nuevo en TikTok, aparece aquí sin tocar la página.
 
-         2. Copia un bloque de abajo, pégalo y cambia:
-            - la ruta del src
-            - el alt (describe la foto: sirve para Google y para
-              quien no puede ver la imagen)
-            - data-brand y el <span class="shot__brand">  (la marca)
-            - el <h3> (la moto) y el <p> (el servicio)
+         Para cambiar de cuenta hay que editar DOS cosas:
+           - data-unique-id="moto.grafix"
+           - el cite= y el href= del enlace de adentro
 
-         3. data-cat debe ser uno de estos (igual a los botones de filtro):
-            wrap · graficos · rines
+         Dos condiciones de TikTok que no dependen de nosotros:
+           1. La cuenta debe ser PÚBLICA. Las privadas no se pueden embeber.
+           2. TikTok a veces responde con su "protección de sobrecarga" y el
+              feed no carga. Por eso existe el bloque de respaldo (#ttFallback):
+              si a los 8 segundos TikTok no respondió, la página muestra una
+              tarjeta con las redes en vez de dejar un hueco vacío.
 
-            Si algún día hay fotos de PPF o blackout, se agrega el botón
-            <button class="filter" data-filter="ppf">PPF</button> arriba
-            y se usa data-cat="ppf" en las fotos. No hay que tocar nada más.
-
-         El loading="lazy" hace que cada foto se descargue solo cuando el
-         visitante llega a ella. No lo quites: es lo que mantiene la página
-         liviana en datos móviles.
+         El script de TikTok NO se carga al abrir la página: se carga solo
+         cuando el visitante se acerca a esta sección (ver main.js). Así la
+         página sigue abriendo rápido en datos móviles.
          ================================================================ -->
-    <div class="gallery" id="gallery">
-      <figure class="shot" data-cat="wrap" data-brand="AKT">
-        <img class="shot__img" loading="lazy" decoding="async"
-             src="assets/img/trabajos/akt-nkd-125-wrap-tornasol.jpeg"
-             alt="AKT NKD 125 con wrap tornasol morado y gráficos holográficos">
-        <span class="shot__brand">AKT</span>
-        <figcaption><h3>AKT NKD 125</h3><p>Wrap tornasol morado + gráficos holográficos</p></figcaption>
-      </figure>
+    <div class="tt reveal">
 
-      <figure class="shot" data-cat="graficos" data-brand="Yamaha">
-        <img class="shot__img" loading="lazy" decoding="async"
-             src="assets/img/trabajos/yamaha-xtz-150-graficos-tornasol.jpeg"
-             alt="Yamaha XTZ 150 blanca con kit gráfico en vinilo tornasol">
-        <span class="shot__brand">Yamaha</span>
-        <figcaption><h3>Yamaha XTZ 150</h3><p>Kit gráfico en tornasol</p></figcaption>
-      </figure>
+      <!-- Mientras TikTok responde -->
+      <div class="tt__loading" id="ttLoading">
+        <span class="tt__spinner" aria-hidden="true"></span>
+        <p>Cargando los últimos videos del taller…</p>
+      </div>
 
-      <figure class="shot" data-cat="wrap" data-brand="AKT">
-        <img class="shot__img" loading="lazy" decoding="async"
-             src="assets/img/trabajos/akt-special-110-wrap-camaleon.jpeg"
-             alt="AKT Special 110 con wrap camaleón gris y morado, vista frontal">
-        <span class="shot__brand">AKT</span>
-        <figcaption><h3>AKT Special 110</h3><p>Wrap camaleón gris–morado</p></figcaption>
-      </figure>
+      <div class="tt__frame" id="ttFrame">
+        <blockquote class="tiktok-embed"
+                    cite="https://www.tiktok.com/@moto.grafix"
+                    data-unique-id="moto.grafix"
+                    data-embed-type="creator">
+          <section>
+            <a target="_blank" rel="noopener"
+               href="https://www.tiktok.com/@moto.grafix?refer=creator_embed">@moto.grafix</a>
+          </section>
+        </blockquote>
+      </div>
 
-      <figure class="shot" data-cat="rines" data-brand="Honda">
-        <img class="shot__img" loading="lazy" decoding="async"
-             src="assets/img/trabajos/honda-xr-190l-rines-calcomanias.jpeg"
-             alt="Honda XR 190L beige con calcomanías naranjas y rines forrados">
-        <span class="shot__brand">Honda</span>
-        <figcaption><h3>Honda XR 190L</h3><p>Forrado de rines y calcomanías</p></figcaption>
-      </figure>
-
-      <figure class="shot" data-cat="wrap" data-brand="Suzuki">
-        <img class="shot__img" loading="lazy" decoding="async"
-             src="assets/img/trabajos/suzuki-dr-150-wrap-gris.jpeg"
-             alt="Suzuki DR 150 con wrap gris y detalles en rojo">
-        <span class="shot__brand">Suzuki</span>
-        <figcaption><h3>Suzuki DR 150</h3><p>Wrap gris</p></figcaption>
-      </figure>
-
-      <figure class="shot" data-cat="graficos" data-brand="Honda">
-        <img class="shot__img" loading="lazy" decoding="async"
-             src="assets/img/trabajos/honda-wave-graficos-tornasol.jpeg"
-             alt="Honda Wave 110 gris con gráficos en vinilo morado tornasol">
-        <span class="shot__brand">Honda</span>
-        <figcaption><h3>Honda Wave 110</h3><p>Gráficos en morado tornasol</p></figcaption>
-      </figure>
-
-      <figure class="shot" data-cat="wrap" data-brand="AKT">
-        <img class="shot__img" loading="lazy" decoding="async"
-             src="assets/img/trabajos/akt-nkd-125-wrap-tornasol-2.jpeg"
-             alt="Detalle del tanque de una AKT NKD 125 con vinilo tornasol y letras holográficas">
-        <span class="shot__brand">AKT</span>
-        <figcaption><h3>AKT NKD 125</h3><p>Detalle del tanque en tornasol</p></figcaption>
-      </figure>
-
-      <figure class="shot" data-cat="rines" data-brand="Yamaha">
-        <img class="shot__img" loading="lazy" decoding="async"
-             src="assets/img/trabajos/yamaha-crypton-rin-tornasol.jpeg"
-             alt="Rin delantero de una Yamaha Crypton forrado en vinilo tornasol azul y morado">
-        <span class="shot__brand">Yamaha</span>
-        <figcaption><h3>Yamaha Crypton</h3><p>Rin forrado en tornasol</p></figcaption>
-      </figure>
-
-      <figure class="shot" data-cat="wrap" data-brand="AKT">
-        <img class="shot__img" loading="lazy" decoding="async"
-             src="assets/img/trabajos/akt-special-110-wrap-camaleon-2.jpeg"
-             alt="AKT Special 110 con wrap camaleón gris y morado, vista lateral completa">
-        <span class="shot__brand">AKT</span>
-        <figcaption><h3>AKT Special 110</h3><p>Wrap camaleón, vista lateral</p></figcaption>
-      </figure>
+      <!-- Respaldo: solo se ve si TikTok no cargó -->
+      <div class="tt__fallback" id="ttFallback" hidden>
+        <svg class="tt__fallback-ico" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M16.6 5.82A4.28 4.28 0 0 0 15.54 3h-3.1v12.4a2.59 2.59 0 1 1-1.84-2.48V9.78a5.98 5.98 0 1 0 4.94 5.89V8.73a7.1 7.1 0 0 0 4.17 1.35V7a4.28 4.28 0 0 1-3.11-1.18"/>
+        </svg>
+        <h3>Mira los trabajos en TikTok</h3>
+        <p>
+          Ahí publicamos cada entrega del taller: los wraps en movimiento, con
+          el tornasol cambiando de color según la luz.
+        </p>
+        <div class="tt__fallback-actions">
+          <a class="btn btn--primary" href="https://www.tiktok.com/@moto.grafix"
+             target="_blank" rel="noopener">Ver @moto.grafix</a>
+          <a class="btn btn--ghost" href="https://www.instagram.com/motografix02"
+             target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
     </div>
-
-    <p class="gallery__empty" id="galleryEmpty" hidden>
-      Todavía no hemos publicado trabajos en esta categoría. Escríbenos y te mostramos ejemplos.
-    </p>
 
     <p class="gallery__note reveal">
-      ¿Quieres ver más? Publicamos cada entrega en
-      <a href="https://www.instagram.com/motografix02" target="_blank" rel="noopener">Instagram @motografix02</a>
-      y <a href="https://www.tiktok.com/@moto.grafix" target="_blank" rel="noopener">TikTok @moto.grafix</a>.
+      También publicamos cada entrega en
+      <a href="https://www.instagram.com/motografix02" target="_blank" rel="noopener">Instagram @motografix02</a>.
+      ¿Quieres algo parecido en tu moto? <a href="#agendar">Agenda una cita</a> y lo cotizamos.
     </p>
   </div>
 </section>
@@ -717,22 +668,6 @@
     <p>Cali, Valle del Cauca — Colombia</p>
   </div>
 </footer>
-
-<!-- ================= VISOR DE FOTOS ================= -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Trabajo ampliado" hidden>
-  <button class="lightbox__close" id="lbClose" aria-label="Cerrar">&times;</button>
-  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
-  <figure class="lightbox__stage">
-    <img class="lightbox__img" id="lbImg" alt="">
-    <figcaption class="lightbox__caption">
-      <span class="lightbox__brand" id="lbBrand"></span>
-      <h3 id="lbTitle"></h3>
-      <p id="lbDesc"></p>
-      <span class="lightbox__count" id="lbCount"></span>
-    </figcaption>
-  </figure>
-  <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Siguiente">&#8250;</button>
-</div>
 
 <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.25 8.24a8.24 8.24 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24m-4.5 4.4c-.21 0-.55.08-.84.39s-1.1 1.08-1.1 2.62 1.13 3.04 1.29 3.25 2.19 3.35 5.32 4.56c2.6 1 3.13.8 3.69.75.56-.05 1.82-.74 2.08-1.46s.26-1.34.18-1.47c-.08-.13-.29-.21-.6-.36s-1.82-.9-2.11-1-.49-.15-.7.16-.8 1-.98 1.21-.36.23-.67.08a8.4 8.4 0 0 1-2.48-1.53 9.3 9.3 0 0 1-1.72-2.14c-.18-.31 0-.48.14-.63.14-.14.31-.36.47-.54s.21-.31.31-.52.05-.39-.03-.54-.7-1.7-.96-2.33c-.25-.61-.51-.53-.7-.54z"/></svg>

@@ -82,65 +82,98 @@ en `main.js` hay un bloque comentado con el `fetch()` listo para tu endpoint.
 
 ---
 
-## Portafolio: cómo agregar un trabajo
+## Portafolio: el feed de TikTok
 
-La galería está organizada **por servicio**, no por tipo de vehículo (el taller
-solo trabaja motos). Las categorías válidas de `data-cat` son:
+La galería **ya no son fotos locales**. La sección `#galeria` muestra el
+*embed de creador* oficial de TikTok, que trae hasta los **10 videos más
+recientes de [@moto.grafix](https://www.tiktok.com/@moto.grafix)** y se
+actualiza solo: cuando Jonathan publica en TikTok, aparece en la página sin
+tocar código ni volver a desplegar.
 
-`wrap` · `graficos` · `rines`
+### Cómo cambiar de cuenta
 
-Deben coincidir exactamente con los `data-filter` de los botones de filtro.
-Para abrir una categoría nueva (PPF, blackout…) se agrega su botón en el bloque
-`<div class="filters">` y ya se puede usar ese `data-cat` en las fotos.
-
-### 1. Guarda la foto
-
-En `assets/img/trabajos/`. Nombre **sin espacios ni tildes**, todo en minúsculas:
-
-```
-yamaha-xtz-150-graficos-tornasol.jpeg
-```
-
-Foto **vertical (3:4)** — sirve tal cual sale del celular. Hay un `LEEME.txt` en
-esa carpeta con las mismas reglas, por si alguien más sube fotos.
-
-### 2. Pega el bloque en `index.html`
-
-Dentro de `<div class="gallery">`:
+En `index.html`, dentro de `<div class="tt">`, hay que editar **dos cosas**
+en el mismo bloque:
 
 ```html
-<figure class="shot" data-cat="wrap" data-brand="Yamaha">
-  <img class="shot__img" loading="lazy" decoding="async"
-       src="assets/img/trabajos/yamaha-xtz-150-graficos-tornasol.jpeg"
-       alt="Yamaha XTZ 150 blanca con kit gráfico en vinilo tornasol">
-  <span class="shot__brand">Yamaha</span>
-  <figcaption>
-    <h3>Yamaha XTZ 150</h3>
-    <p>Kit gráfico en tornasol</p>
-  </figcaption>
-</figure>
+<blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@moto.grafix"
+            data-unique-id="moto.grafix"      ← aquí
+            data-embed-type="creator">
+  <section>
+    <a target="_blank" rel="noopener"
+       href="https://www.tiktok.com/@moto.grafix?refer=creator_embed">@moto.grafix</a>
+  </section>                                   ← y el href de aquí
+</blockquote>
 ```
 
-Eso es todo: el filtro, la insignia de marca y el visor de fotos lo toman
-automáticamente.
+Y en `assets/css/styles.css` no hay que tocar nada.
 
-**No quites el `loading="lazy"`**: es lo que hace que cada foto se descargue solo
-cuando el visitante llega a ella, en vez de bajar las 9 de golpe.
+### La altura es obligatoria y va en el CSS
 
-El `alt` no es relleno: es lo que lee Google y lo que escucha quien usa lector de
-pantalla. Descríbelo como se lo contarías a alguien por teléfono.
+Esto es lo más fácil de romper. TikTok declara su embed como `height: 100%`,
+o sea que **rellena lo que le demos**. Si el contenedor no define una altura,
+el iframe se queda en los 150 px que el navegador da por defecto y no se ve
+nada.
+
+La altura tiene que bajar en cadena, y los tres eslabones están en el CSS:
+
+```
+.tt__frame        height:470px   (540px en celular)
+  └ blockquote    height:100% !important
+      └ iframe    height:100% !important
+```
+
+Los `!important` hacen falta porque `embed.js` escribe sus propios estilos en
+línea. Si algún día el feed aparece aplastado en una franja delgada, es que se
+rompió uno de esos tres eslabones.
+
+Las medidas salieron de medir el contenido real: **457 px de alto a 720 px de
+ancho**. En celular el encabezado del perfil (nombre, cifras y biografía)
+envuelve en más líneas, por eso allá se le dan 540 px.
+
+### El script se carga tarde, a propósito
+
+`embed.js` no se descarga al abrir la página. `main.js` espera con un
+`IntersectionObserver` a que el visitante se acerque a la sección (400 px
+antes). Si nunca baja hasta el portafolio, nunca se descarga. Eso mantiene
+rápida la primera carga, que es la que importa en datos móviles.
+
+### El respaldo
+
+Si a los 10 segundos TikTok no insertó su iframe, la página oculta el feed y
+muestra `#ttFallback`: una tarjeta con enlaces a TikTok e Instagram. Pasa en
+tres casos:
+
+- la cuenta se volvió **privada** (TikTok no deja embeber cuentas privadas);
+- TikTok responde con su **protección de sobrecarga** (`overload-protect`),
+  que se activa si recibe muchas peticiones seguidas desde la misma IP;
+- el visitante usa un **bloqueador de rastreadores** — Brave y Firefox lo
+  traen activado de fábrica y bloquean `tiktok.com/embed.js`.
+
+Ese último caso no es raro, así que el respaldo no es decorativo: para una
+parte real de los visitantes es lo único que van a ver. Por eso está escrito
+como una invitación y no como un mensaje de error.
+
+### Lo que se perdió al cambiar
+
+Vale tenerlo presente por si algún día conviene volver atrás:
+
+- **Los filtros por servicio** (Wrap / Gráficos / Rines). El feed de TikTok es
+  cronológico y no se puede filtrar.
+- **El visor de fotos** a pantalla completa.
+- **La indexación en Google.** Google indexaba las fotos con su `alt`; los
+  videos dentro de un iframe de TikTok no cuentan como contenido de la página.
+
+Las 9 fotos **siguen en `assets/img/trabajos/`** y el código de la galería
+sigue en el historial de git, así que restaurarla es revertir un commit.
 
 ### Peso de las fotos
 
-Ideal por debajo de 300 KB cada una. La de la Yamaha XTZ 150 pesa 879 KB — vale
-la pena pasarla por [squoosh.app](https://squoosh.app) antes de publicar el sitio.
-
-### Visor de fotos
-
-Al hacer clic en un trabajo se abre en grande, con la marca, el nombre y el
-servicio. Se navega con las flechas ← → del teclado o los botones laterales, y se
-cierra con Esc, con la ✕ o haciendo clic en el fondo. Solo recorre los trabajos
-del filtro activo.
+Las fotos que quedan en uso están en el hero y en el muestrario de acabados.
+Ideal por debajo de 300 KB cada una. `yamaha-xtz-150-graficos-tornasol.jpeg`
+pesa 879 KB, pero **ya no se carga en ninguna parte** desde que se quitó la
+galería: solo ocupa espacio en el repositorio.
 
 ## Las fotos del hero
 
@@ -208,18 +241,14 @@ Decisiones que conviene no deshacer sin querer:
   toda la página. Si quieres letra más chica, cambia el `padding`, no el tamaño.
 - **`scroll-margin-top` en las secciones.** La barra superior es sticky; sin esa
   regla, al tocar un enlace del menú la sección aterriza escondida detrás.
-- **`loading="lazy"` en las fotos del portafolio.** Ver la sección del portafolio.
 - **El bloque `@media (hover:none)`.** En pantallas táctiles el `:hover` se queda
   pegado después de tocar: una tarjeta tocada se quedaba levantada. Ese bloque
-  anula los efectos de mouse y, de paso, deja la lupa del portafolio siempre
-  visible (en táctil nunca aparecía).
-- **La galería va a 2 columnas** en celular, y los filtros se vuelven una tira
-  deslizable de borde a borde en vez de apilarse en cuatro líneas.
+  anula los efectos de mouse.
+- **El feed de TikTok mide 540 px de alto en celular** y 470 px en escritorio.
+  No es capricho: ver la sección del portafolio.
 - **En el hero, el texto va antes que las fotos** en celular, para que el titular
   y el botón de agendar se vean sin hacer scroll. Y de las tres fotos superpuestas
   queda solo una: en 340 px de ancho las otras dos ni se distinguían.
-- **Visor de fotos con gestos:** deslizar a los lados cambia de foto, deslizar
-  hacia abajo cierra.
 
 ## Notas
 
@@ -228,7 +257,10 @@ Decisiones que conviene no deshacer sin querer:
 - Si alguno de los dos PNG del logo faltara, la página muestra automáticamente un
   logo de texto de respaldo en vez de romperse.
 - Responsive de 320 px en adelante, con menú hamburguesa en móvil.
-- Accesible: skip link, focus visible, `aria-*` en menú y filtros, respeta
+- Accesible: skip link, focus visible, `aria-*` en el menú, respeta
   `prefers-reduced-motion`.
+- El feed de TikTok es contenido de un tercero dentro de un iframe: su aspecto
+  lo controla TikTok, no este CSS. Viene con fondo claro y no se puede
+  oscurecer desde aquí, así que rompe un poco con el tema oscuro del resto.
 - Las fuentes vienen de Google Fonts (Barlow Condensed + Inter). Si necesitas que
   funcione sin internet, descárgalas a `assets/` y cambia el `<link>` del `<head>`.
