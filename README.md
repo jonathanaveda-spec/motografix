@@ -46,12 +46,28 @@ Si el número cambia, hay que tocarlo en dos sitios: `CONFIG.whatsapp` en
 | Servicio | Precio |
 |---|---|
 | Wrap completo (moto) | $400.000 |
+| Wrap camaleón — parcial | $350.000 |
+| Wrap camaleón — completo | $400.000 |
 | Kit gráfico original | $90.000 |
 | Kit gráfico personalizado | $160.000 |
 | Calcomanías y stickers | desde $20.000 |
+| Forrado de rin | $120.000 |
 | PPF — moto completa | $500.000 |
 | Rotulación comercial | a cotización |
 | Detalles y blackout | a cotización |
+
+**Un precio vive en tres sitios y los tres tienen que decir lo mismo**, o el
+cliente ve una cifra en el muestrario y otra en el formulario:
+
+1. la tarjeta de `#servicios` (`<p class="card__price">`),
+2. el panel del muestrario del hero, si ese acabado tiene panel
+   (`<p class="swatchbook__price">` y el `data-service` de su botón),
+3. la opción del `<select id="servicio">` del formulario.
+
+El `data-service` del botón "Agendar este acabado" debe coincidir **palabra por
+palabra** con el texto de su `<option>`: es así como el botón deja el servicio
+ya elegido en el formulario. Si no coinciden, el botón deja de preseleccionar y
+nadie se entera.
 
 Se editan en la sección `#servicios` de `index.html` (dentro de `<p class="card__price">`)
 y en el `<select id="servicio">` del formulario.
