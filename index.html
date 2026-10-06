@@ -193,6 +193,183 @@
   </div>
 </section>
 
+<!-- ================= AGENDAR ================= -->
+<section class="section section--book" id="agendar">
+  <div class="container book">
+    <div class="book__intro reveal">
+      <h2 class="section__title">Agenda tu cita</h2>
+      <p class="section__sub">
+        Completa el formulario y te enviamos la confirmación por WhatsApp.
+        Sin anticipo: solo apartamos el cupo del día.
+      </p>
+
+      <ul class="book__facts">
+        <li>
+          <span class="ico ico--red" aria-hidden="true"></span>
+          <span>Lunes a sábado · 9:30 a.m. a 6:30 p.m. <em>jornada continua</em></span>
+        </li>
+        <li>
+          <span class="ico ico--blue" aria-hidden="true"></span>
+          <span>Carrera 15 # 49-72, Barrio Chapineros<br>Cali, Valle del Cauca — Colombia</span>
+        </li>
+        <li>
+          <span class="ico ico--yellow" aria-hidden="true"></span>
+          <span>No atendemos domingos ni días festivos</span>
+        </li>
+      </ul>
+
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Carrera+15+%2349-72+Cali+Valle+del+Cauca+Colombia" target="_blank" rel="noopener">
+        Ver ubicación en Google Maps →
+      </a>
+
+      <!--
+        TESTIMONIO REAL: cuando un cliente te deje un comentario, pídele
+        permiso y reemplaza el bloque de abajo por este:
+
+        <blockquote class="book__quote">
+          <p>“El comentario tal cual lo escribió el cliente.”</p>
+          <cite>— Nombre del cliente, modelo de la moto</cite>
+        </blockquote>
+
+        El estilo .book__quote ya está listo en el CSS: se ve igual que
+        el recuadro actual, con la comilla en cursiva y el nombre debajo.
+      -->
+      <div class="book__proof">
+        <p>Cada trabajo que sale del taller queda publicado el mismo día. Míralos ahí:</p>
+        <div class="book__proof-links">
+          <a href="https://www.instagram.com/motografix02" target="_blank" rel="noopener">Instagram @motografix02</a>
+          <a href="https://www.tiktok.com/@moto.grafix" target="_blank" rel="noopener">TikTok @moto.grafix</a>
+        </div>
+      </div>
+    </div>
+
+    <form class="form reveal" id="bookingForm" novalidate>
+      <div class="form__row">
+        <div class="field">
+          <label for="nombre">Nombre completo *</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" placeholder="Ej. Ana Rodríguez" required>
+          <small class="field__error" data-error-for="nombre"></small>
+        </div>
+        <div class="field">
+          <label for="telefono">WhatsApp *</label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="Ej. 300 123 4567" required>
+          <small class="field__error" data-error-for="telefono"></small>
+        </div>
+      </div>
+
+      <div class="form__row">
+        <div class="field">
+          <label for="vehiculo">Tipo de vehículo *</label>
+          <select id="vehiculo" name="vehiculo" required>
+            <option value="">Selecciona…</option>
+            <option>Moto</option>
+            <option>Auto</option>
+            <option>Camioneta / SUV</option>
+            <option>Casco o accesorio</option>
+            <option>Flota / empresa</option>
+          </select>
+          <small class="field__error" data-error-for="vehiculo"></small>
+        </div>
+        <div class="field">
+          <label for="modelo">Marca y modelo</label>
+          <input type="text" id="modelo" name="modelo" placeholder="Ej. Honda CB190 2022">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="servicio">Servicio de interés *</label>
+        <select id="servicio" name="servicio" required>
+          <option value="">Selecciona…</option>
+          <option>Wrap completo — $400.000</option>
+          <option>Kit gráfico original — $90.000</option>
+          <option>Kit gráfico personalizado — $160.000</option>
+          <option>Calcomanías y stickers — desde $20.000</option>
+          <option>PPF moto completa — $500.000</option>
+          <option>Rotulación comercial — a cotización</option>
+          <option>Detalles y blackout — a cotización</option>
+          <option>No estoy seguro, necesito asesoría</option>
+        </select>
+        <small class="field__error" data-error-for="servicio"></small>
+      </div>
+
+      <div class="form__row">
+        <div class="field">
+          <label for="fecha">Fecha preferida *</label>
+          <input type="date" id="fecha" name="fecha" required>
+          <small class="field__error" data-error-for="fecha"></small>
+        </div>
+        <div class="field">
+          <label for="hora">Hora *</label>
+          <select id="hora" name="hora" required>
+            <option value="">Selecciona…</option>
+            <option>09:30</option><option>10:30</option><option>11:30</option>
+            <option>12:30</option><option>13:30</option><option>14:30</option>
+            <option>15:30</option><option>16:30</option><option>17:30</option>
+          </select>
+          <small class="field__error" data-error-for="hora"></small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="mensaje">Cuéntanos tu idea</label>
+        <textarea id="mensaje" name="mensaje" rows="3" placeholder="Colores, referencias, si ya tienes un diseño…"></textarea>
+      </div>
+
+      <div class="field field--check">
+        <label class="check">
+          <input type="checkbox" id="acepto" name="acepto" required>
+          <span>Acepto ser contactado por WhatsApp para confirmar la cita. *</span>
+        </label>
+        <small class="field__error" data-error-for="acepto"></small>
+      </div>
+
+      <!-- Trampa antispam: invisible para las personas, los bots la llenan -->
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <button class="btn btn--primary btn--block" type="submit">
+        <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.25 8.24a8.24 8.24 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24m-4.5 4.4c-.21 0-.55.08-.84.39s-1.1 1.08-1.1 2.62 1.13 3.04 1.29 3.25 2.19 3.35 5.32 4.56c2.6 1 3.13.8 3.69.75.56-.05 1.82-.74 2.08-1.46s.26-1.34.18-1.47c-.08-.13-.29-.21-.6-.36s-1.82-.9-2.11-1-.49-.15-.7.16-.8 1-.98 1.21-.36.23-.67.08a8.4 8.4 0 0 1-2.48-1.53 9.3 9.3 0 0 1-1.72-2.14c-.18-.31 0-.48.14-.63.14-.14.31-.36.47-.54s.21-.31.31-.52.05-.39-.03-.54-.7-1.7-.96-2.33c-.25-.61-.51-.53-.7-.54z"/></svg>
+        Agendar por WhatsApp
+      </button>
+      <p class="form__hint">* Campos obligatorios. Se abrirá WhatsApp con el resumen de tu cita.</p>
+
+      <div class="form__success" id="formSuccess" hidden>
+        <h3>¡Solicitud recibida!</h3>
+        <p id="successText"></p>
+        <p class="form__warn" id="successMailWarn" hidden>
+          No pudimos registrar tu solicitud automáticamente. Envíala por WhatsApp
+          para que no se pierda.
+        </p>
+        <p class="form__fallback">
+          ¿No se abrió WhatsApp?
+          <a id="waLink" href="#" target="_blank" rel="noopener">Ábrelo aquí</a>
+        </p>
+        <div class="form__success-actions">
+          <button class="btn btn--ghost btn--sm" type="button" id="resetForm">Hacer otra solicitud</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= INVITACIÓN A SEGUIR BAJANDO =================
+     El formulario quedó arriba del todo. Sin esto, mucha gente creería
+     que la página se acaba ahí: este bloque le dice que sigue. Es un
+     enlace completo a #servicios, así que tocarlo en cualquier punto
+     baja la página. -->
+<a class="scrolldown reveal" href="#servicios">
+  <strong class="grad">Abajo está lo bueno</strong>
+  <span class="scrolldown__sub">
+    Precios sin letra menuda, los trabajos que han salido del taller
+    y cómo es el proceso, paso a paso.
+  </span>
+  <span class="scrolldown__arrow" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14"/><path d="m19 12-7 7-7-7"/>
+    </svg>
+  </span>
+</a>
+
 <!-- ================= SERVICIOS ================= -->
 <section class="section" id="servicios">
   <div class="container">
@@ -482,164 +659,6 @@
         <p>Revisión contigo, guía de cuidados y garantía por escrito. Tu vehículo listo para rodar.</p>
       </li>
     </ol>
-  </div>
-</section>
-
-<!-- ================= AGENDAR ================= -->
-<section class="section section--book" id="agendar">
-  <div class="container book">
-    <div class="book__intro reveal">
-      <h2 class="section__title">Agenda tu cita</h2>
-      <p class="section__sub">
-        Completa el formulario y te enviamos la confirmación por WhatsApp.
-        Sin anticipo: solo apartamos el cupo del día.
-      </p>
-
-      <ul class="book__facts">
-        <li>
-          <span class="ico ico--red" aria-hidden="true"></span>
-          <span>Lunes a sábado · 9:30 a.m. a 6:30 p.m. <em>jornada continua</em></span>
-        </li>
-        <li>
-          <span class="ico ico--blue" aria-hidden="true"></span>
-          <span>Carrera 15 # 49-72, Barrio Chapineros<br>Cali, Valle del Cauca — Colombia</span>
-        </li>
-        <li>
-          <span class="ico ico--yellow" aria-hidden="true"></span>
-          <span>No atendemos domingos ni días festivos</span>
-        </li>
-      </ul>
-
-      <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Carrera+15+%2349-72+Cali+Valle+del+Cauca+Colombia" target="_blank" rel="noopener">
-        Ver ubicación en Google Maps →
-      </a>
-
-      <!--
-        TESTIMONIO REAL: cuando un cliente te deje un comentario, pídele
-        permiso y reemplaza el bloque de abajo por este:
-
-        <blockquote class="book__quote">
-          <p>“El comentario tal cual lo escribió el cliente.”</p>
-          <cite>— Nombre del cliente, modelo de la moto</cite>
-        </blockquote>
-
-        El estilo .book__quote ya está listo en el CSS: se ve igual que
-        el recuadro actual, con la comilla en cursiva y el nombre debajo.
-      -->
-      <div class="book__proof">
-        <p>Cada trabajo que sale del taller queda publicado el mismo día. Míralos ahí:</p>
-        <div class="book__proof-links">
-          <a href="https://www.instagram.com/motografix02" target="_blank" rel="noopener">Instagram @motografix02</a>
-          <a href="https://www.tiktok.com/@moto.grafix" target="_blank" rel="noopener">TikTok @moto.grafix</a>
-        </div>
-      </div>
-    </div>
-
-    <form class="form reveal" id="bookingForm" novalidate>
-      <div class="form__row">
-        <div class="field">
-          <label for="nombre">Nombre completo *</label>
-          <input type="text" id="nombre" name="nombre" autocomplete="name" placeholder="Ej. Ana Rodríguez" required>
-          <small class="field__error" data-error-for="nombre"></small>
-        </div>
-        <div class="field">
-          <label for="telefono">WhatsApp *</label>
-          <input type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="Ej. 300 123 4567" required>
-          <small class="field__error" data-error-for="telefono"></small>
-        </div>
-      </div>
-
-      <div class="form__row">
-        <div class="field">
-          <label for="vehiculo">Tipo de vehículo *</label>
-          <select id="vehiculo" name="vehiculo" required>
-            <option value="">Selecciona…</option>
-            <option>Moto</option>
-            <option>Auto</option>
-            <option>Camioneta / SUV</option>
-            <option>Casco o accesorio</option>
-            <option>Flota / empresa</option>
-          </select>
-          <small class="field__error" data-error-for="vehiculo"></small>
-        </div>
-        <div class="field">
-          <label for="modelo">Marca y modelo</label>
-          <input type="text" id="modelo" name="modelo" placeholder="Ej. Honda CB190 2022">
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="servicio">Servicio de interés *</label>
-        <select id="servicio" name="servicio" required>
-          <option value="">Selecciona…</option>
-          <option>Wrap completo — $400.000</option>
-          <option>Kit gráfico original — $90.000</option>
-          <option>Kit gráfico personalizado — $160.000</option>
-          <option>Calcomanías y stickers — desde $20.000</option>
-          <option>PPF moto completa — $500.000</option>
-          <option>Rotulación comercial — a cotización</option>
-          <option>Detalles y blackout — a cotización</option>
-          <option>No estoy seguro, necesito asesoría</option>
-        </select>
-        <small class="field__error" data-error-for="servicio"></small>
-      </div>
-
-      <div class="form__row">
-        <div class="field">
-          <label for="fecha">Fecha preferida *</label>
-          <input type="date" id="fecha" name="fecha" required>
-          <small class="field__error" data-error-for="fecha"></small>
-        </div>
-        <div class="field">
-          <label for="hora">Hora *</label>
-          <select id="hora" name="hora" required>
-            <option value="">Selecciona…</option>
-            <option>09:30</option><option>10:30</option><option>11:30</option>
-            <option>12:30</option><option>13:30</option><option>14:30</option>
-            <option>15:30</option><option>16:30</option><option>17:30</option>
-          </select>
-          <small class="field__error" data-error-for="hora"></small>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="mensaje">Cuéntanos tu idea</label>
-        <textarea id="mensaje" name="mensaje" rows="3" placeholder="Colores, referencias, si ya tienes un diseño…"></textarea>
-      </div>
-
-      <div class="field field--check">
-        <label class="check">
-          <input type="checkbox" id="acepto" name="acepto" required>
-          <span>Acepto ser contactado por WhatsApp para confirmar la cita. *</span>
-        </label>
-        <small class="field__error" data-error-for="acepto"></small>
-      </div>
-
-      <!-- Trampa antispam: invisible para las personas, los bots la llenan -->
-      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <button class="btn btn--primary btn--block" type="submit">
-        <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.25 8.24a8.24 8.24 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24m-4.5 4.4c-.21 0-.55.08-.84.39s-1.1 1.08-1.1 2.62 1.13 3.04 1.29 3.25 2.19 3.35 5.32 4.56c2.6 1 3.13.8 3.69.75.56-.05 1.82-.74 2.08-1.46s.26-1.34.18-1.47c-.08-.13-.29-.21-.6-.36s-1.82-.9-2.11-1-.49-.15-.7.16-.8 1-.98 1.21-.36.23-.67.08a8.4 8.4 0 0 1-2.48-1.53 9.3 9.3 0 0 1-1.72-2.14c-.18-.31 0-.48.14-.63.14-.14.31-.36.47-.54s.21-.31.31-.52.05-.39-.03-.54-.7-1.7-.96-2.33c-.25-.61-.51-.53-.7-.54z"/></svg>
-        Agendar por WhatsApp
-      </button>
-      <p class="form__hint">* Campos obligatorios. Se abrirá WhatsApp con el resumen de tu cita.</p>
-
-      <div class="form__success" id="formSuccess" hidden>
-        <h3>¡Solicitud recibida!</h3>
-        <p id="successText"></p>
-        <p class="form__warn" id="successMailWarn" hidden>
-          No pudimos registrar tu solicitud automáticamente. Envíala por WhatsApp
-          para que no se pierda.
-        </p>
-        <p class="form__fallback">
-          ¿No se abrió WhatsApp?
-          <a id="waLink" href="#" target="_blank" rel="noopener">Ábrelo aquí</a>
-        </p>
-        <div class="form__success-actions">
-          <button class="btn btn--ghost btn--sm" type="button" id="resetForm">Hacer otra solicitud</button>
-        </div>
-      </div>
-    </form>
   </div>
 </section>
 

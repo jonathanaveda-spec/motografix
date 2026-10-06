@@ -60,6 +60,29 @@ y en el `<select id="servicio">` del formulario.
 
 ## Cómo funciona el formulario de citas
 
+### Va arriba, y por eso va compacto
+
+El orden de la página es: hero → marcas → **formulario** → invitación a bajar →
+servicios → galería → proceso → FAQ. El formulario está arriba a propósito, para
+que quien ya sabe lo que quiere no tenga que recorrer la página entera.
+
+Como va arriba, se le aplica un bloque de reglas `.section--book …` que lo
+encoge alrededor de un 20 % (la sección pasó de 1375 px a 1132 px de alto
+medidos a 789 px de ancho). **Lo que se encogió es espacio y tipografía de
+apoyo, nunca los campos**: siguen en 16 px exactos porque por debajo de eso
+Safari en iPhone hace zoom al enfocarlos y descuadra la página. A ellos se les
+redujo el relleno, que es lo que sí se puede tocar.
+
+Dos suelos que conviene no cruzar si se aprieta más: los campos quedaron en
+48 px de alto y el botón en 50 px, y por debajo de 44 px un dedo ya falla.
+
+Justo debajo del formulario va el bloque `.scrolldown` ("Abajo está lo bueno").
+No es decorativo: el formulario suele ser lo último en un sitio, así que sin esa
+señal mucha gente creería que la página se acaba ahí. Es un enlace completo a
+`#servicios`, de modo que tocarlo en cualquier punto baja la página.
+
+### Validación
+
 Es 100 % del lado del cliente. Valida los campos y **bloquea automáticamente**:
 
 - domingos,

@@ -625,6 +625,70 @@ body.is-locked{
 .form__success-actions{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
 .form.is-sent > *:not(.form__success){ display:none; }
 
+/* ---------- Formulario compacto ----------
+   El formulario subió a la parte de arriba de la página, así que se
+   encoge alrededor de un 20% para que quepa antes en pantalla.
+
+   Lo que se encoge es ESPACIO y tipografía de apoyo. Los campos conservan
+   sus 16px exactos: por debajo de eso Safari en iPhone hace zoom al
+   enfocarlos y descuadra la página entera. A ellos se les reduce el
+   relleno, que es lo que sí se puede tocar sin romper nada.
+
+   Estas reglas van después de .section a propósito: tienen la misma
+   especificidad, así que gana la última y por eso el padding de aquí
+   pisa el de .section. */
+.section--book{ padding:clamp(44px, 6vw, 80px) 0; }
+.section--book .section__title{ font-size:clamp(26px, 4vw, 42px); }
+.section--book .section__sub{ margin-top:11px; font-size:.97rem; }
+.section--book .book{ gap:clamp(26px, 4vw, 51px); }
+.section--book .book__facts{ margin-top:19px; gap:11px; }
+.section--book .book__facts li{ font-size:.88rem; }
+.section--book .book__proof{ margin-top:21px; padding:15px 17px; }
+.section--book .book__proof p{ font-size:.89rem; }
+.section--book .form{ padding:clamp(19px, 2.8vw, 29px); gap:14px; }
+.section--book .form__row{ gap:14px; }
+.section--book .field{ gap:6px; }
+.section--book .field label{ font-size:.78rem; }
+.section--book .field input,
+.section--book .field select,
+.section--book .field textarea{ padding:10px 12px; }
+/* height, no solo min-height: sin él manda el atributo rows del textarea */
+.section--book .field textarea{ min-height:0; height:70px; }
+/* 12px de relleno deja el botón en unos 50px de alto: por encima de los
+   44px que necesita un dedo. No bajar más. */
+.section--book .btn{ padding:12px 22px; }
+
+/* ---------- Invitación a seguir bajando ----------
+   Va justo debajo del formulario. Sin esto mucha gente creería que la
+   página se acaba ahí, porque el formulario suele ser lo último en un
+   sitio, no lo primero. */
+.scrolldown{
+  display:flex; flex-direction:column; align-items:center; gap:13px;
+  padding:clamp(36px, 5.5vw, 60px) var(--pad);
+  text-align:center; color:inherit;
+  background:
+    radial-gradient(540px 160px at 50% 0%, rgba(168,85,247,.16), transparent 70%),
+    var(--bg);
+}
+.scrolldown strong{
+  font-family:var(--ff-display); font-weight:700; text-transform:uppercase;
+  font-size:clamp(24px, 3.6vw, 36px); letter-spacing:.01em; line-height:1.05;
+}
+.scrolldown__sub{
+  max-width:46ch; color:var(--gray-2); font-size:.97rem; line-height:1.55;
+}
+.scrolldown__arrow{
+  margin-top:4px; width:48px; height:48px; border-radius:50%;
+  display:grid; place-items:center; flex:none;
+  background:var(--surface); border:1px solid var(--line); color:var(--text);
+  transition:border-color .2s, color .2s;
+  animation:bajar 2s ease-in-out infinite;
+}
+.scrolldown__arrow svg{ width:22px; height:22px; }
+@keyframes bajar{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(7px); } }
+.scrolldown:hover .scrolldown__arrow{ border-color:var(--red); color:var(--red); }
+.scrolldown:focus-visible{ outline:3px solid var(--yellow); outline-offset:-6px; }
+
 /* ---------- FAQ ---------- */
 .faq{ display:grid; gap:0; border-top:1px solid var(--line); }
 .faq details{ border-bottom:1px solid var(--line); }
@@ -749,8 +813,16 @@ body.is-locked{
   .section__cta{ align-self:flex-start; }
 
   .section{ padding:clamp(56px, 12vw, 80px) 0; }
+  /* Hay que repetirlo aquí: la regla de .section de arriba está dentro de
+     esta consulta, así que gana por orden y se llevaría por delante el
+     padding reducido del formulario. */
+  .section--book{ padding:clamp(44px, 9vw, 64px) 0; }
   .card{ padding:26px 22px 22px; }
   .steps{ gap:34px; }
+
+  /* La invitación a bajar se aprieta y la flecha se achica un poco */
+  .scrolldown{ gap:11px; }
+  .scrolldown__arrow{ width:44px; height:44px; }
 
   .form__row{ grid-template-columns:1fr; }
   .footer__grid{ grid-template-columns:1fr; gap:28px; }
